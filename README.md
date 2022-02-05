@@ -11,16 +11,16 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-[Description of your app]
+App_name is a period tracker.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Health/Lifestyle 
+- **Mobile:** Android
+- **Story:** Analyses user's menstrual cycle and keeping track user's symptoms at the same time predict the future cycle
+- **Market:** Any woman who wants to keep track of their menstration cycle
+- **Habit:** Uses the app daily to keep track of moods or symptoms.
+- **Scope:** Taking user inputs and store on their local device, having simple calculation device and calendar interface.
 
 ## Product Spec
 
@@ -29,12 +29,17 @@ Original App Design Project - README Template
 **Required Must-have Stories**
 
 * [fill in your required user stories here]
-* ...
+* prompt the user to give input (first day of the cycle, end day of the cycle, moods, symptoms, menstrural flow and craving)
+* highlighted from the first day to end of the cycle
+* show the expected date of the next cycle
+* Settings e.g Notifications (end date and predicted start date)
+* 
 
 **Optional Nice-to-have Stories**
 
 * [fill in your required user stories here]
-* ...
+* Change the color palete 
+* Logo Design
 
 ### 2. Screen Archetypes
 
