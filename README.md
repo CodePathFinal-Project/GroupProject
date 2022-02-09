@@ -42,30 +42,40 @@ App_name is a period tracker.
 * Logo Design
 
 ### 2. Screen Archetypes
+* Login 
+* Register - User signs up or logs into their account
+   * Upon Download/Reopening of the application, the user is prompted to log in to gain access to their profile information. 
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Setting screen
+   * Lets people to change notification/reminders, theme, password management
+  
+* Calendar view
+   * Allows the user to input the start and end dates of the menstrual cycle
+   * Allows the user to see predictions for their cycle
+
+* Daily input view
+  * A pop up from calendar view (after a user clicks on a specific date, this view shows up)
+  * Lets the user track their start&end date of the cycle, mood, symptoms, etc.
+
+
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Calendar 
+* Settings
+
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Forced Log-in -> Account creation if no log in is available
+  * Register 
+   
+* Calendar 
+   * Daily Input
+
+* Settings
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
