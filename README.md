@@ -79,8 +79,7 @@ App_name is a period tracker.
 
 ## Wireframes
 
-<img src="![codepath_wireframe](https://user-images.githubusercontent.com/71671419/153700766-39254979-c737-40a2-be63-25cb7400ff67.png)
-" width=600>
+<img src="https://user-images.githubusercontent.com/71671419/153700766-39254979-c737-40a2-be63-25cb7400ff67.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
