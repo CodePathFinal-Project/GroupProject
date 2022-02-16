@@ -133,3 +133,17 @@ App_name is a period tracker.
    - (Update/PUT) update user’s period length, cycle length, username and password
 - [Create basic snippets for each Parse network request]
 
+ - Sign In  Screen
+   - (Read/GET) Query all posts where user is author
+
+private fun loginUser(username: String, password: String) {
+   ParseUser.logInInBackground(username, password, ({ user, e ->
+       if (user != null) {
+           Log.i(TAG, "Successfully logged in user")
+           goToMainActivity()
+       } else {
+           e.printStackTrace()
+           Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+       }})
+   )
+}
