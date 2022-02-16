@@ -131,20 +131,68 @@ App_name is a period tracker.
 - settings screen
    - (Read/GET) query user’s period length, cycle length, username and password
    - (Update/PUT) update user’s period length, cycle length, username and password
-- [Create basic snippets for each Parse network request]
+   
+#### List of network requests by screen
+   - Sign In Screen
+      - (Read/GET) Query all posts where user is author
+         ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved \(posts.count) posts.")
+           // TODO: Do something with posts...
+            }
+         }
+         ```
+         
+ - Setting Screen
+   - (Read/GET) Query current user information 
+        ```swift
+        var currentUser: User = null
+        query.findInBackground(object: FindCallback<Post> {
+           override fun done(user: User, e: ParseException?) {
+               if (e != null) {
+                   //Something went wrong
+                   Log.e(TAG, "Error fetching user information")
+               } else {
+                   if (user != null) {
+                       for (user in posts) {
+                           Log.i(TAG, "User: " + user.Info())
+                       }
+                       currentUser = user
+                       adapter.notifyDataSetChanged()
+                   }
+               }
+           }
 
- - Sign In  Screen
-   - (Read/GET) Query all posts where user is author
-```swift
-private fun loginUser(username: String, password: String) {
-   ParseUser.logInInBackground(username, password, ({ user, e ->
-       if (user != null) {
-           Log.i(TAG, "Successfully logged in user")
-           goToMainActivity()
-       } else {
-           e.printStackTrace()
-           Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
-       }})
-   )
-}
-```
+        })
+        ```
+        
+   - Calendar View Screen 
+    - (Read/GET) DailyInput Information to show on the calendar
+        ```swift
+        var allDailyInputs: MutableList<DailyInput> = mutableListOf()
+        query.findInBackground(object: FindCallback<DailyInput> {
+           override fun done(dailyInputs: MutableList<DailyInput>?, e: ParseException?) {
+               if (e != null) {
+                   //Something went wrong
+                   Log.e(TAG, "Error fetching daily inputs")
+               } else {
+                   if (posts != null) {
+                       for (dailyInput in dailyInputs) {
+                           Log.i(TAG, "Post: " + post.getDescription())
+                       }
+                       allDailyInputs.addAll(dailyInputs)
+                       adapter.notifyDataSetChanged()
+                   }
+               }
+           }
+
+        })
+        ```
+        
+    
