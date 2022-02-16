@@ -172,7 +172,7 @@ App_name is a period tracker.
         })
         ```
         
-   - Calendar View Screen 
+  - Calendar View Screen 
     - (Read/GET) DailyInput Information to show on the calendar
         ```swift
         var allDailyInputs: MutableList<DailyInput> = mutableListOf()
