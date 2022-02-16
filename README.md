@@ -90,6 +90,18 @@ App_name is a period tracker.
 ### Models
 [Add table of models]
 ### Networking
-- [Add list of network requests by screen ]
+- get started screen
+  -(Create/POST) post user’s answers to introductory questions to User class
+  -(Create/POST) post user’s desired username and password
+- sign in screen
+  -(Read/GET) verify the password and user if the username and password match, the user is successfully logged in
+- calendar view
+  -(Read/GET) query logged in user’s startedAt and endedAt dates
+- date view
+  -(Create/POST) post user’s inputted start and end date and symptoms
+  -(Update/PUT) update user’s inputted start and end date and symptoms
+- settings screen
+  -(Read/GET) query user’s period length, cycle length, username and password
+  -(Update/PUT) update user’s period length, cycle length, username and password
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
