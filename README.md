@@ -93,15 +93,15 @@ App_name is a period tracker.
 | ------------- | ------------- | ------------- |
 | `userId`  | Pointer to User  | Unique id for different user account |
 | `cycleId`  | Int  | Unique id for user's cycle |
-| `startedAt` | DateTime | date when the user input their 1st day of the cycle |
-| `endedAt` | DateTime | date when the user input their cycle ended |
+| `startedAt` | DateTime | Date for when the user input their 1st day of the cycle |
+| `endedAt` | DateTime | Date for when the user input their cycle ended |
 
 | Property (DailyInput Class)  | Type | Description |
 | ------------- | ------------- | ------------- |
 | `userId`  | Pointer to User  | Unique id for different user account |
 | `cycleId` | Int | Unique id for each user's cycle|
 | `Cramp` | Int | On a scale 0-10 how the user experienced cramp |
-| `Fatigue` | Int | On a scale 0-10 how the user experienced fatigueness |
+| `Fatigue` | Int | On a scale 0-10 how the user experienced fatigue |
 | `Energy` | Int | User energy level on the scale of 0 - 10 |
 | `Acne` | Int | User acne breakout on the scale of 0 - 10 |
 
