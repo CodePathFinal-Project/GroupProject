@@ -88,15 +88,17 @@ App_name is a period tracker.
 ## Schema 
 [This section will be completed in Unit 9]
 
-### Models
-| Property (Cycle Class)  | Type | Description |
+### Model
+**Cycle class**
+| Property   | Type | Description |
 | ------------- | ------------- | ------------- |
 | `userId`  | Pointer to User  | Unique id for different user account |
 | `cycleId`  | Int  | Unique id for user's cycle |
 | `startedAt` | DateTime | Date for when the user input their 1st day of the cycle |
 | `endedAt` | DateTime | Date for when the user input their cycle ended |
 
-| Property (DailyInput Class)  | Type | Description |
+**DailyInput Class**
+| Property  | Type | Description |
 | ------------- | ------------- | ------------- |
 | `userId`  | Pointer to User  | Unique id for different user account |
 | `cycleId` | Int | Unique id for each user's cycle|
@@ -105,7 +107,8 @@ App_name is a period tracker.
 | `Energy` | Int | User energy level on the scale of 0 - 10 |
 | `Acne` | Int | User acne breakout on the scale of 0 - 10 |
 
-| Property (User Class)  | Type | Description |
+**User Class**
+| Property  | Type | Description |
 | ------------- | ------------- | ------------- |
 | `userId`  | String  | Unique id for different user account |
 | `password` | String | User authentication alog with username |
@@ -129,76 +132,4 @@ App_name is a period tracker.
    - (Read/GET) query user’s period length, cycle length, username and password
    - (Update/PUT) update user’s period length, cycle length, username and password
 - [Create basic snippets for each Parse network request]
-// Login (READ/GET)
-private fun loginUser(username: String, password: String) {
-   ParseUser.logInInBackground(username, password, ({ user, e ->
-       if (user != null) {
-           Log.i(TAG, "Successfully logged in user")
-           goToMainActivity()
-       } else {
-           e.printStackTrace()
-           Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
-       }})
-   )
-}
-
-// User Request (READ/GET)
-var currentUser: User = null
-query.findInBackground(object: FindCallback<Post> {
-   override fun done(user: User, e: ParseException?) {
-       if (e != null) {
-           //Something went wrong
-           Log.e(TAG, "Error fetching user information")
-       } else {
-           if (user != null) {
-               for (user in posts) {
-                   Log.i(TAG, "User: " + user.Info())
-               }
-               currentUser = user
-               adapter.notifyDataSetChanged()
-           }
-       }
-   }
-
-})
-
-// Cycle Request (READ/GET)
-var allCycles: MutableList<Post> = mutableListOf()
-query.findInBackground(object: FindCallback<Post> {
-   override fun done(cycles: MutableList<Cycle>?, e: ParseException?) {
-       if (e != null) {
-           //Something went wrong
-           Log.e(TAG, "Error fetching cycles")
-       } else {
-           if (cycles != null) {
-               for (cyle in posts) {
-                   Log.i(TAG, "Cycle: " + cycle.getDescription())
-               }
-               allCycles.addAll(cycles)
-               adapter.notifyDataSetChanged()
-           }
-       }
-   }
-
-})
-
-// DailyInput (READ/GET)
-var allDailyInputs: MutableList<DailyInput> = mutableListOf()
-query.findInBackground(object: FindCallback<DailyInput> {
-   override fun done(dailyInputs: MutableList<DailyInput>?, e: ParseException?) {
-       if (e != null) {
-           //Something went wrong
-           Log.e(TAG, "Error fetching daily inputs")
-       } else {
-           if (posts != null) {
-               for (dailyInput in dailyInputs) {
-                   Log.i(TAG, "Post: " + post.getDescription())
-               }
-               allDailyInputs.addAll(dailyInputs)
-               adapter.notifyDataSetChanged()
-           }
-       }
-   }
-
-})
 
