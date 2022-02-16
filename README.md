@@ -135,7 +135,7 @@ App_name is a period tracker.
 
  - Sign In  Screen
    - (Read/GET) Query all posts where user is author
-
+```swift
 private fun loginUser(username: String, password: String) {
    ParseUser.logInInBackground(username, password, ({ user, e ->
        if (user != null) {
@@ -147,3 +147,4 @@ private fun loginUser(username: String, password: String) {
        }})
    )
 }
+```
