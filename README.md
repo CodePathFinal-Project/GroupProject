@@ -118,7 +118,6 @@ App_name is a period tracker.
 | `cycleLength` | Int | User cycle length |
 | `periodLength` | Int | User period length | 
 
-[Add table of models]
 ### Networking
 - get started screen
    - (Create/POST) post user’s answers to introductory questions to User class
