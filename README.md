@@ -102,12 +102,13 @@ App_name is a period tracker.
 **DailyInput Class**
 | Property  | Type | Description |
 | ------------- | ------------- | ------------- |
+|`dailyInput`| String | Unique id for different day input |
 | `userId`  | Pointer to User  | Unique id for different user account |
-| `cycleId` | Int | Unique id for each user's cycle|
-| `Cramp` | Int | On a scale 0-10 how the user experienced cramp |
-| `Fatigue` | Int | On a scale 0-10 how the user experienced fatigue |
-| `Energy` | Int | User energy level on the scale of 0 - 10 |
-| `Acne` | Int | User acne breakout on the scale of 0 - 10 |
+| `cycleId` | Pointer to Cycle | Unique id for each user's cycle|
+| `cramp` | Int | On a scale 0-10 how the user experienced cramp |
+| `fatigue` | Int | On a scale 0-10 how the user experienced fatigue |
+| `energy` | Int | User energy level on the scale of 0 - 10 |
+| `acne` | Int | User acne breakout on the scale of 0 - 10 |
 
 **User Class**
 | Property  | Type | Description |
