@@ -95,7 +95,7 @@ App_name is a period tracker.
 | Property   | Type | Description |
 | ------------- | ------------- | ------------- |
 | `userId`  | Pointer to User  | Unique id for different user account |
-| `cycleId`  | Int  | Unique id for user's cycle |
+| `cycleId`  | String | Unique id for user's cycle |
 | `startedAt` | DateTime | Date for when the user input their 1st day of the cycle |
 | `endedAt` | DateTime | Date for when the user input their cycle ended |
 
