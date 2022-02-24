@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="568dp"
+        android:background="@drawable/button"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Save" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:inputType="date"
+        android:textColor="@color/pink_light"
+        android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mon, Jan 13" />
+
+    <TextView
+        android:id="@+id/textStartDate"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="Start date"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="136dp"
+        android:textColor="@color/pink_light"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textEndDate"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="End date"
+        android:textColor="@color/pink_light"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textStartDate" />
+
+    <Button
+        android:id="@+id/buttonStartDate"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="144dp"
+        android:text="Select date"
+        android:background="@drawable/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="13 Jan" />
+
+    <Button
+        android:id="@+id/buttonEndDate"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/button"
+        android:text="Select date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="19 Jan" />
+
+    <TextView
+        android:id="@+id/cramps"
+        android:layout_width="92dp"
+        android:layout_height="27dp"
+        android:gravity="center"
+        android:text="cramps"
+        android:textColor="#E1D3E9"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="332dp" />
+
+    <SeekBar
+        android:id="@+id/crampsBar"
+        android:layout_width="196dp"
+        android:layout_height="12dp"
+        android:thumbTint="#E1D3E9"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="340dp" />
+
+
+    <TextView
+        android:id="@+id/fatigue"
+        android:layout_width="92dp"
+        android:layout_height="27dp"
+        android:gravity="center"
+        android:text="fatigue"
+        android:textColor="#E1D3E9"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="477dp" />
+
+    <SeekBar
+        android:id="@+id/fatigueBar"
+        android:layout_width="196dp"
+        android:layout_height="12dp"
+        android:thumbTint="#E1D3E9"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="485dp" />
+
+    <TextView
+        android:id="@+id/headache"
+        android:layout_width="92dp"
+        android:layout_height="27dp"
+        android:gravity="center"
+        android:text="headache"
+        android:textColor="#E1D3E9"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="428dp" />
+
+    <SeekBar
+        android:id="@+id/headacheBar"
+        android:layout_width="196dp"
+        android:layout_height="12dp"
+        android:thumbTint="#E1D3E9"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="436dp" />
+
+    <TextView
+        android:id="@+id/acne"
+        android:layout_width="92dp"
+        android:layout_height="27dp"
+        android:gravity="center"
+        android:text="acne"
+        android:textColor="#E1D3E9"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="380dp" />
+
+    <SeekBar
+        android:id="@+id/acneBar"
+        android:layout_width="196dp"
+        android:layout_height="12dp"
+        android:thumbTint="#E1D3E9"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="388dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
