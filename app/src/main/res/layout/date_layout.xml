@@ -7,17 +7,16 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/saveDate"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_marginTop="568dp"
+        android:layout_marginTop="564dp"
         android:background="@drawable/button"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Save" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textDate"
