@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textCycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Cycle"
+        android:textColor="@color/pink_light"
+        android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textPeriodLength"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:text="Period Length"
+        android:textColor="@color/pink_light"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCycleLength"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/button"
+        android:text="Select days"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="28 days" />
+
+    <Button
+        android:id="@+id/buttonStartDate"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/button"
+        android:text="Select days"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="7 days" />
+
+    <TextView
+        android:id="@+id/textCycleLength"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center"
+        android:text="Cycle Length"
+        android:textColor="@color/pink_light"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <Button
+        android:id="@+id/saveCycle"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/button"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
