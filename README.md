@@ -94,31 +94,31 @@ App_name is a period tracker.
 **Cycle class**
 | Property   | Type | Description |
 | ------------- | ------------- | ------------- |
-| `userId`  | Pointer to User  | Unique id for different user account |
-| `cycleId`  | Int  | Unique id for user's cycle |
-| `startedAt` | DateTime | Date for when the user input their 1st day of the cycle |
-| `endedAt` | DateTime | Date for when the user input their cycle ended |
+| `cycleId`  | String | Unique id for user's cycle |
+| `user`  | Pointer to User  | Current user login class(required) |
+| `startedAt` | DateTime | Date for when the user input their 1st day of the cycle(required) |
+| `endedAt` | DateTime | Date for when the user input their cycle ended(required) |
 
 **DailyInput Class**
 | Property  | Type | Description |
 | ------------- | ------------- | ------------- |
-| `userId`  | Pointer to User  | Unique id for different user account |
-| `cycleId` | Int | Unique id for each user's cycle|
-| `Cramp` | Int | On a scale 0-10 how the user experienced cramp |
-| `Fatigue` | Int | On a scale 0-10 how the user experienced fatigue |
-| `Energy` | Int | User energy level on the scale of 0 - 10 |
-| `Acne` | Int | User acne breakout on the scale of 0 - 10 |
+|`dailyInputID`| String | Unique id for different day input |
+| `user`  | Pointer to User  | Current user login class(required) |
+| `cycle` | Pointer to Cycle | Cycle class of the current day(required) |
+| `cramp` | Int | On a scale 0-10 how the user experienced cramp |
+| `fatigue` | Int | On a scale 0-10 how the user experienced fatigue |
+| `energy` | Int | User energy level on the scale of 0 - 10 |
+| `acne` | Int | User acne breakout on the scale of 0 - 10 |
 
 **User Class**
 | Property  | Type | Description |
 | ------------- | ------------- | ------------- |
-| `userId`  | String  | Unique id for different user account |
-| `password` | String | User authentication alog with username |
-| `username` | String | User authentication alog with password |
-| `cycleLength` | Int | User cycle length |
-| `periodLength` | Int | User period length | 
+| `userId`  | String  | Unique id for different user account(required) |
+| `password` | String | username authentication (required) |
+| `username` | String | password authentication (required) |
+| `cycleLength` | Int | User cycle length(default set 0) |
+| `periodLength` | Int | User period length(default set 0) | 
 
-[Add table of models]
 ### Networking
 - get started screen
    - (Create/POST) post user’s answers to introductory questions to User class
