@@ -5,4 +5,10 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
 
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Paste BOTH strings as required -->
+    <string name="back4app_app_id">"DwGSGPxtqpej6V95n9G9nJ2g95XDSB8sQPfF27IC"</string>
+    <string name="back4app_client_key">"v6jP53KiJTotUQSz9j83jAPvsQDrddwXjf6NS2Hq"</string>
+
 </resources>
