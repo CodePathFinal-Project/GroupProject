@@ -83,9 +83,15 @@ App_name is a period tracker.
 
 <img width="579" alt="codepath_wireframe" src="https://user-images.githubusercontent.com/71671419/154630793-8bc91598-9fc1-4a2a-bfce-db3b2618b9b6.png">
 
+
 ### [BONUS] Interactive Prototype
 
 ![wireframe](https://user-images.githubusercontent.com/71671419/154630810-0998a02b-9e2d-4390-805d-a9894030777a.gif)
+
+
+### [UNIT 7] Progress
+
+![wireframe](https://github.com/CodePathFinal-Project/GroupProject/blob/main/Progress%20Unit7.gif)
 
 ## Schema 
 [This section will be completed in Unit 9]
