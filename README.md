@@ -28,10 +28,10 @@ App_name is a period tracker.
 
 **Required Must-have Stories**
 
-* prompt the user to give input (first day of the cycle, end day of the cycle, moods, symptoms, menstrural flow and craving)
-* highlighted from the first day to end of the cycle
-* show the expected date of the next cycle
-* Settings e.g Notifications (end date and predicted start date)
+[*] prompt the user to give input (first day of the cycle, end day of the cycle, moods, symptoms, menstrural flow and craving)
+[ ] highlighted from the first day to end of the cycle
+[ ] show the expected date of the next cycle
+[*] Settings e.g Notifications (end date and predicted start date)
 
 
 **Optional Nice-to-have Stories**
