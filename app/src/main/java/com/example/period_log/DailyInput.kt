@@ -1,6 +1,8 @@
 package com.example.period_log
 
 import com.parse.ParseClassName
+import com.parse.ParseObject
+import com.parse.ParseUser
 
 //user : User
 //cycle : Cycle
@@ -9,9 +11,50 @@ import com.parse.ParseClassName
 //energy : Int
 //acne : Int
 @ParseClassName("DailyInput")
-class DailyInput {
-    //TODO: getUser, setUser, getCycle, setCycle, getCramp, setCramp, getfatigue, setfatigue
-    //TODO: getEnergy, setEnergy, getAnce, setAnce
+class DailyInput : ParseObject() {
+
+    fun getUser(): ParseUser? {
+        return getParseUser(KEY_USER)
+    }
+    fun setUser(user: ParseUser) {
+        put(KEY_USER, user)
+    }
+
+    fun getCycle() : ParseObject? {
+        return getParseObject(KEY_CYCLE)
+    }
+    fun setCycle(cycle: Cycle) {
+        put(KEY_CYCLE, cycle)
+    }
+
+    fun getCramp() : Any? {
+        return get(KEY_CRAMP)
+    }
+    fun setCramp(cramp: Int) {
+        put(KEY_CRAMP, cramp)
+    }
+
+    fun getFatgiue() : Any? {
+        return get(KEY_FATIGUE)
+    }
+    fun setFatigue(fatigue: Int) {
+        put(KEY_FATIGUE, fatigue)
+    }
+
+    fun getEnergy() : Any? {
+        return get(KEY_ENERGY)
+    }
+    fun setEnergy(energy: Int) {
+        put(KEY_ENERGY, energy)
+    }
+
+    fun getAcne() : Any? {
+        return get(KEY_ACNE)
+    }
+    fun setAcne(acne: Int) {
+        put(KEY_ACNE, acne)
+    }
+
 
     companion object {
         const val KEY_USER = "user"
@@ -19,6 +62,6 @@ class DailyInput {
         const val KEY_CRAMP = "cramp"
         const val KEY_FATIGUE = "fatigue"
         const val KEY_ENERGY = "energy"
-        const val KEY_acne = "acne"
+        const val KEY_ACNE = "acne"
     }
 }
