@@ -13,13 +13,14 @@
     <TextView
         android:id="@+id/tvCalendar"
         android:layout_width="match_parent"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="20dp"
         android:layout_height="50dp"
         android:background="@color/white"
         android:text="Calendar"
         android:textAlignment="center"
         android:textColor="@color/pink_light"
         android:textSize="36dp" />
+
 
     <TextView
         android:id="@+id/tvMonth"
