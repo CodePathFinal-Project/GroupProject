@@ -93,6 +93,10 @@ App_name is a period tracker.
 
 ![wireframe](https://github.com/CodePathFinal-Project/GroupProject/blob/main/Progress%20Unit7.gif)
 
+### [UNIT 8] Progress
+
+![wireframe](https://github.com/CodePathFinal-Project/GroupProject/blob/main/unit%208%20walkthrough.gif)
+
 ## Schema 
 [This section will be completed in Unit 9]
 
