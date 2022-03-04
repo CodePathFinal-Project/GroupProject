@@ -4,9 +4,11 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
 import java.util.*
+
 
 class Calendar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +44,14 @@ class Calendar : AppCompatActivity() {
             override fun onDayClick(dateClicked: Date) {
                 val events: List<Event> = compactCalendarView.getEvents(dateClicked)
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
+                Toast.makeText(this@Calendar, "Date $dateClicked was clicked", Toast.LENGTH_LONG).show()
             }
 
             override fun onMonthScroll(firstDayOfNewMonth: Date) {
                 Log.d(TAG, "Month was scrolled to: $firstDayOfNewMonth")
+                Toast.makeText(this@Calendar, "Month scrolled $firstDayOfNewMonth", Toast.LENGTH_LONG).show()
             }
+
         })
     }
     companion object{

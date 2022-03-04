@@ -44,5 +44,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck"
         tools:text="sign in" />
+<!--temporary button to view calendar-->
+    <Button
+        android:id="@+id/buttonForCalendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view calendar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
