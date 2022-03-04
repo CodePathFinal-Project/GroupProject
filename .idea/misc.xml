@@ -24,6 +24,14 @@
         <entry key="..\:/Users/Kenny/AndroidStudioProjects/OrgBoba/GroupProject/app/src/main/res/layout/date_view.xml" value="0.5" />
         <entry key="..\:/Users/Kenny/AndroidStudioProjects/OrgBoba/GroupProject/app/src/main/res/layout/questionnaire_layout.xml" value="0.4216485507246377" />
         <entry key="..\:/Users/Kenny/AndroidStudioProjects/OrgBoba/GroupProject/app/src/main/res/layout/settings_layout.xml" value="0.43478260869565216" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/calendar_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cycle_layout.xml" value="0.3548717948717949" />
+        <entry key="app/src/main/res/layout/date_layout.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/questionnaire_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/settings_layout.xml" value="0.2271062271062271" />
       </map>
     </option>
   </component>

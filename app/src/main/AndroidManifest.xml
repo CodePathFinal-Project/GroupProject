@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Period_Log">
         <activity
+            android:name=".Calendar"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -11,7 +11,7 @@
         android:gravity="center"
         android:text="Settings"
         android:textColor="@color/pink_light"
-        android:textSize="36dp"
+        android:textSize="36sp"
         tools:layout_editor_absoluteX="140dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -22,7 +22,7 @@
         android:background="@color/purple_light"
         android:gravity=""
         android:text="Account"
-        android:textSize="24dp"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="144dp" />
 
@@ -33,7 +33,7 @@
         android:background="@color/purple_light"
         android:gravity=""
         android:text="Cycle"
-        android:textSize="24dp"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="234dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
