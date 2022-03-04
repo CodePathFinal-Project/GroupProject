@@ -9,7 +9,7 @@ import com.parse.ParseUser
 
 //user : User
 //startedAt : Int (milliseconds)
-//enddedAt : Int (milliseconds)
+//endedAt : Int (milliseconds)
 @ParseClassName("Cycle")
 class Cycle : ParseObject(){
 

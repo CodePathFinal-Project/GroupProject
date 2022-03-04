@@ -9,12 +9,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-<!--make full text view to cover the pink top in this layer-->
+    <TextView
+        android:id="@+id/blankspace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textAlignment="center"
+        android:textColor="@color/pink_light"
+        android:textSize="20dp" />
+
     <TextView
         android:id="@+id/tvCalendar"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="50dp"
+        android:layout_height="77dp"
         android:background="@color/white"
         android:text="Calendar"
         android:textAlignment="center"
@@ -49,6 +56,7 @@
         app:compactCalendarTargetHeight="450dp"
         app:compactCalendarTextColor="#fff"
         app:compactCalendarTextSize="16sp" />
+
 
 
 </LinearLayout>

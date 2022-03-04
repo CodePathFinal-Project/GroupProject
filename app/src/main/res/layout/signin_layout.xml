@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/welcomeTitle"
+        android:id="@+id/getStartedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Welcome back!" />
+        tools:text="Let's get started!" />
 
     <EditText
         android:id="@+id/usernameEt"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedTitle"
         app:layout_constraintVertical_bias="0.15" />
 
     <EditText
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedTitle"
         app:layout_constraintVertical_bias="0.458" />
 
     <Button
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedTitle"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedTitle"
         app:layout_constraintVertical_bias="1.0" />
 
 
