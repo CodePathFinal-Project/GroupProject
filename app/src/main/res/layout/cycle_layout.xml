@@ -28,6 +28,7 @@
         android:text="Period Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonStartDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +36,7 @@
         android:id="@+id/buttonCycleLength"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="208dp"
         android:background="@drawable/button"
         android:text="Select days"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +52,12 @@
         android:layout_marginTop="128dp"
         android:background="@drawable/button"
         android:text="Select days"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCycleLength"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.767"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="7 days" />
 
     <TextView
@@ -66,19 +69,24 @@
         android:text="Cycle Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCycleLength"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="215dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textPeriodLength"
+        app:layout_constraintVertical_bias="0.055" />
 
     <Button
         android:id="@+id/saveCycle"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_marginTop="400dp"
         android:background="@drawable/button"
         android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.574" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
