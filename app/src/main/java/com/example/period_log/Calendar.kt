@@ -30,7 +30,7 @@ class Calendar : AppCompatActivity() {
 
         // Query for events on Sun, 07 Jun 2015 GMT.
         // Time is not relevant when querying for events, since events are returned by day.
-        // So you can pass in any arbitary DateTime and you will receive all events for that day.
+        // So you can pass in any arbitrary DateTime and you will receive all events for that day.
         val events: List<Event> =
             compactCalendarView.getEvents(1433701251000L) // can also take a Date object
 
