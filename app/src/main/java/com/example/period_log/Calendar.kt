@@ -31,7 +31,7 @@ class Calendar : AppCompatActivity() {
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
         btnSettings.setOnClickListener{
-            val intent = Intent(this, SettingsActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
