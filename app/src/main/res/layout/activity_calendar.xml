@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink_light"
@@ -10,53 +10,57 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/blankspace"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:textColor="@color/pink_light"
-        android:textSize="20dp" />
-
-    <TextView
         android:id="@+id/tvCalendar"
         android:layout_width="match_parent"
-        android:layout_height="77dp"
+        android:layout_height="100sp"
         android:background="@color/white"
+        android:gravity="center"
         android:text="Calendar"
         android:textAlignment="center"
         android:textColor="@color/pink_light"
-        android:textSize="36dp" />
+        android:textSize="36dp"
+        tools:ignore="TextContrastCheck" />
 
 
     <TextView
         android:id="@+id/tvMonth"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/pink_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="mmmm YYYY"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCalendar" />
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/compactcalendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_below="@+id/month"
-        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:compactCalendarBackgroundColor="#E2D3E8"
         app:compactCalendarCurrentDayBackgroundColor="@color/purple_light"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#b1d8cf"
         app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarOtherMonthDaysTextColor="#b1d8cf"
-        app:compactCalendarTargetHeight="450dp"
+        app:compactCalendarTargetHeight="400dp"
         app:compactCalendarTextColor="#fff"
-        app:compactCalendarTextSize="16sp" />
+        app:compactCalendarTextSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvMonth" />
+
+    <ImageButton
+        android:id="@+id/cvSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_settings_24" />
 
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
