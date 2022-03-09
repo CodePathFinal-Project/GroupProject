@@ -16,15 +16,16 @@ class QuestionnaireActivity : AppCompatActivity() {
         val cycleLengthEt = findViewById<EditText>(R.id.cycleLengthEt)
 
         periodLengthEt.setOnClickListener(){
-            Log.i(TAG, periodLengthEt.text.toString())
+            Log.i(TAG, periodLengthEt.text.toString()) // logcat message for debugging
+            val periodLengthEt_value = periodLengthEt.text.toString().toInt() // stores user input as integer
         }
 
         cycleLengthEt.setOnClickListener(){
             Log.i(TAG, cycleLengthEt.text.toString())
+            val cycleLengthEt_value = periodLengthEt.text.toString().toInt()
         }
-
-
     }
+
     companion object {
         const val TAG ="QuestionnaireActivity"
     }
