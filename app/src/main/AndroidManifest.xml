@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.period_log">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".PeriodLogApplication"
@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Period_Log">
+        <activity
+            android:name=".dailyInputActivity"
+            android:exported="false" />
         <activity
             android:name=".Calendar"
             android:exported="false" />
@@ -25,8 +28,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".GetStartedActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".GetStartedActivity" />
+        <activity android:name=".LoginActivity" />
+
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".QuestionnaireActivity"></activity>
 
@@ -40,7 +44,6 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
-
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ class Calendar : AppCompatActivity() {
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
         btnSettings.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,18 +66,18 @@ class Calendar : AppCompatActivity() {
             override fun onDayClick(dateClicked: Date) {
                 val events: List<Event> = compactCalendarView.getEvents(dateClicked)
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
-                //Toast.makeText(this@Calendar, dateClicked.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Calendar, dateClicked.toString(), Toast.LENGTH_SHORT).show()
                 val popupMenu: PopupMenu = PopupMenu(this@Calendar, compactCalendarView) //gravity.right? or sliding window?
                 popupMenu.menuInflater.inflate(R.menu.popup_menu_calendar, popupMenu.menu)
                 popupMenu.show()
                 //TODO: change position of the popup
-                //if event already exist, ask view log
+                //redirect to daily input when clicked
             }
 
 
             override fun onMonthScroll(firstDayOfNewMonth: Date) {
                 Log.d(TAG, "Month was scrolled to: $firstDayOfNewMonth")
-                //Toast.makeText(this@Calendar, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Calendar, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
                 mYEdited = firstDayOfNewMonth.toString()
                 mmmmYYYY.setText(mYEdited.substring(4,8) + mYEdited.substring(24,28))
 
