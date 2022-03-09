@@ -20,7 +20,7 @@
         tools:text="Hi, username!" />
 
     <TextView
-        android:id="@+id/textPeriodLength_User"
+        android:id="@+id/periodLengthTv"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
@@ -32,21 +32,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonCycleLength_User"
+    <EditText
+        android:id="@+id/cycleLengthEt"
         android:layout_width="110dp"
         android:layout_height="38dp"
         android:layout_marginTop="232dp"
         android:background="@drawable/button"
-        android:text="Select days"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="28 days" />
+        tools:hint="Enter number" />
 
     <TextView
-        android:id="@+id/textCycleLength_User"
+        android:id="@+id/cycleLengthTv"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
@@ -54,24 +53,25 @@
         android:text="Cycle Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
+        android:layout_marginTop="232dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="226dp" />
 
-    <Button
-        android:id="@+id/buttonStartDate_User"
+    <EditText
+        android:id="@+id/periodLengthEt"
         android:layout_width="110dp"
         android:layout_height="38dp"
         android:layout_marginTop="148dp"
         android:background="@drawable/button"
-        android:text="Select days"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="7 days" />
+        tools:hint="Enter number" />
 
     <Button
-        android:id="@+id/saveUser"
+        android:id="@+id/saveBtn"
         android:layout_width="110dp"
         android:layout_height="38dp"
         android:layout_marginTop="444dp"
@@ -83,4 +83,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Save" />
 
+    //Adding two editTexts later we will replace buttonCycleLength_User and buttonPeriodLength_User
 </androidx.constraintlayout.widget.ConstraintLayout>

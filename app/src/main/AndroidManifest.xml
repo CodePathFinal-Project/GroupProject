@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.period_log">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".PeriodLogApplication"
         android:allowBackup="true"
@@ -19,19 +21,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".SignIn"></activity>
-        <activity android:name=".Login"></activity>
-
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".AccountSettingsActivity"></activity>
-        <activity android:name=".CycleSettingsActivity"></activity>
-
-
-
+        <activity android:name=".GetStartedActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />
@@ -41,5 +36,7 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
+
     </application>
+
 </manifest>
