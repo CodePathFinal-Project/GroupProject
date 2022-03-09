@@ -28,8 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="get started" />
+
+        android:text="get started" />
 
     <Button
         android:id="@+id/signInBtn"
@@ -40,8 +40,8 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="sign in" />
+
+        android:text="sign in" />
 <!--temporary button to view calendar-->
     <Button
         android:id="@+id/buttonForCalendarView"

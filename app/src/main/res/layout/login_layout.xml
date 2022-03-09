@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Welcome back!" />
+        android:text="Welcome back!" />
 
     <EditText
         android:id="@+id/usernameEt"
@@ -56,17 +56,17 @@
         app:layout_constraintVertical_bias="0.458" />
 
     <Button
-        android:id="@+id/saveUser"
+        android:id="@+id/logInBtn"
         android:layout_width="110dp"
         android:layout_height="48dp"
         android:layout_marginTop="564dp"
         android:background="@drawable/button"
-        android:text="Save"
+        android:text="Done"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Done" />
+        />
 
     <TextView
         android:id="@+id/usernameTv"
