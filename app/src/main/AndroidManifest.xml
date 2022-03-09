@@ -19,14 +19,23 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+        </activity>
+
+        <activity android:name=".GetStartedActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
+        <activity
+            android:name=".QuestionnaireActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GetStartedActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
+
+
+
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />
