@@ -31,7 +31,7 @@ class GetStartedActivity : AppCompatActivity() {
         user.signUpInBackground{ e ->
             if (e == null) {
                 Log.i(TAG, "successfully signed up user")
-                goToQuestionaire()
+                goToQuestionnaire()
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Error signing up", Toast.LENGTH_SHORT).show()
@@ -39,7 +39,7 @@ class GetStartedActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToQuestionaire() {
+    private fun goToQuestionnaire() {
         val intent = Intent(this@GetStartedActivity, QuestionnaireActivity::class.java)
         startActivity(intent)
     }
