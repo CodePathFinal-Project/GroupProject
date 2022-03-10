@@ -20,6 +20,8 @@
         <activity
             android:name=".Calendar"
             android:exported="false" />
+
+        <!--         android:name=".MainActivity"-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".AccountSettingsActivity" />
         <activity android:name=".CycleSettingsActivity" />
         <activity android:name=".GetStartedActivity" />
