@@ -15,17 +15,17 @@ class Cycle : ParseObject(){
 
     //TODO: getStartedAt, setStartedAt, getEndedAt, setEndedAt, getUser, setUser
     fun getStartedAt(): Int? {
-        return getInt(KEY_STARTEDAT)
+        return getInt(KEY_STARTED_AT)
     }
     fun setStartedAt(startAt: Int) {
-        put(KEY_STARTEDAT,startAt )
+        put(KEY_STARTED_AT,startAt )
     }
 
     fun getEndedAt(): Int? {
-        return getInt(KEY_ENDEDAT)
+        return getInt(KEY_ENDED_AT)
     }
     fun setEndedAt(endedAt: Int) {
-        put(KEY_ENDEDAT, endedAt)
+        put(KEY_ENDED_AT, endedAt)
     }
 
     fun getUser() : ParseUser? {
@@ -35,10 +35,9 @@ class Cycle : ParseObject(){
         put(KEY_USER, user)
     }
 
-
     companion object {
-        const val KEY_STARTEDAT = "startedAt"
-        const val KEY_ENDEDAT = "endedAt"
+        const val KEY_STARTED_AT = "startedAt"
+        const val KEY_ENDED_AT = "endedAt"
         const val KEY_USER = "user"
     }
 }

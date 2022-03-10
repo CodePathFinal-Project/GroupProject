@@ -35,7 +35,6 @@ class GetStartedActivity : AppCompatActivity() {
                 Toast.makeText(this, "Successfully signing up", Toast.LENGTH_SHORT).show()
                 Log.i(TAG, user.objectId)
                 signUpUserPeriodAndCycleLength(user)
-                //goToQuestionnaire()
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Error signing up", Toast.LENGTH_SHORT).show()

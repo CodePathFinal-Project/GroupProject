@@ -34,7 +34,7 @@ class DailyInput : ParseObject() {
         put(KEY_CRAMP, cramp)
     }
 
-    fun getFatgiue() : Any? {
+    fun getFatigue() : Any? {
         return get(KEY_FATIGUE)
     }
     fun setFatigue(fatigue: Int) {
