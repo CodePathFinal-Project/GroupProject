@@ -7,5 +7,7 @@ class DailyInputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.daily_input_layout)
+
+
     }
 }

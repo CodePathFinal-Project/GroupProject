@@ -39,7 +39,7 @@
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/compactcalendar_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginTop="20dp"
         app:compactCalendarBackgroundColor="#E2D3E8"
         app:compactCalendarCurrentDayBackgroundColor="@color/purple_light"
@@ -47,7 +47,7 @@
         app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarOtherMonthDaysTextColor="#b1d8cf"
         app:compactCalendarTargetHeight="400dp"
-        app:compactCalendarTextColor="#fff"
+        app:compactCalendarTextColor="@color/white"
         app:compactCalendarTextSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/tvMonth" />
 
@@ -61,6 +61,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_settings_24" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btnViewDailyInput"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@color/pink_light"-->
+<!--        android:text="View Daily Input"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view"-->
+<!--        app:layout_constraintVertical_bias="0.355" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
