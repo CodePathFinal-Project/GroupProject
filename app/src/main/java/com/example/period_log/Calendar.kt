@@ -20,6 +20,7 @@ class Calendar : AppCompatActivity() {
     lateinit var mmmmYYYY : TextView
     lateinit var mYEdited : String
     lateinit var btnSettings: ImageButton
+    lateinit var temp : Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,18 +66,42 @@ class Calendar : AppCompatActivity() {
         compactCalendarView.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             override fun onDayClick(dateClicked: Date) {
                 val events: List<Event> = compactCalendarView.getEvents(dateClicked)
+                var temp = dateClicked.time
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
-                Toast.makeText(this@Calendar, dateClicked.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Calendar, "$temp", Toast.LENGTH_SHORT).show()
                 val popupMenu: PopupMenu = PopupMenu(this@Calendar, compactCalendarView) //gravity.right? or sliding window?
                 popupMenu.menuInflater.inflate(R.menu.popup_menu_calendar, popupMenu.menu)
+                popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+                    when(item.itemId) {
+                        R.id.action_viewDI -> {
+                            Toast.makeText(
+                                this@Calendar,
+                                "You Clicked : " + item.title,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            gotoDailyInputActivity()
+                        }
+                        R.id.action_addDI -> {
+                            Toast.makeText(
+                                this@Calendar,
+                                "You Clicked : " + item.title,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            gotoDailyInputActivity()
+                        }
+                    }
+                    true
+                })
                 popupMenu.show()
                 //TODO: change position of the popup
-                //redirect to daily input when clicked
+                //TODO: fetch user data when view daily input (only if exists)
             }
-
 
             override fun onMonthScroll(firstDayOfNewMonth: Date) {
                 Log.d(TAG, "Month was scrolled to: $firstDayOfNewMonth")
+
+                var temp1 = firstDayOfNewMonth.time //returns milliseconds
+                //milliseconds to Date class
                 Toast.makeText(this@Calendar, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
                 mYEdited = firstDayOfNewMonth.toString()
                 mmmmYYYY.setText(mYEdited.substring(4,8) + mYEdited.substring(24,28))
@@ -85,6 +110,12 @@ class Calendar : AppCompatActivity() {
 
         })
     }
+
+    private fun gotoDailyInputActivity() {
+        val intent = Intent(this, DailyInputActivity::class.java)
+        startActivity(intent)
+    }
+
     companion object{
         var TAG = "HI"
         val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",

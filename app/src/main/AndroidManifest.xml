@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Period_Log">
         <activity
-            android:name=".dailyInputActivity"
+            android:name=".DailyInputActivity"
             android:exported="false" />
+
         <activity
             android:name=".Calendar"
             android:exported="false" />
@@ -24,16 +25,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".AccountSettingsActivity" />
+        <activity android:name=".CycleSettingsActivity" />
         <activity android:name=".GetStartedActivity" />
         <activity android:name=".LoginActivity" />
-
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".QuestionnaireActivity"></activity>
-
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".QuestionnaireActivity" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"
