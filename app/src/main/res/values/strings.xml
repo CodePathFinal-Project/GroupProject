@@ -12,7 +12,7 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
 
-<!--    for Calendar add dailyInput Pop up menu-->
+    <!--    for Calendar add dailyInput Pop up menu-->
     <string name="view_dailyInput">View Daily Input</string>
     <string name="add_dailyInput">Add Daily Input</string>
 </resources>
