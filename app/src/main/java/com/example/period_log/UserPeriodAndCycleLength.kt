@@ -21,11 +21,8 @@ class UserPeriodAndCycleLength: ParseObject() {
         put(KEY_CYCLE_LENGTH, cycleLength)
     }
 
-    fun getUserId(): String? {
-        return getString(KEY_OBJECT_ID)
-    }
-    fun getUser() : ParseUser? {
-        return getParseUser(KEY_USER)
+    fun getUser(): ParseUser? {
+        return getParseUser(KEY_OBJECT_ID)
     }
     fun setUser(user: ParseUser) {
         put(KEY_USER, user)

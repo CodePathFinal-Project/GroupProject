@@ -20,9 +20,6 @@ class GetStartedActivity : AppCompatActivity() {
             val username = findViewById<EditText>(R.id.usernameSignUpEt).text.toString()
             val password = findViewById<EditText>(R.id.passwordSignUpEt).text.toString()
             signUpUser(username,password)
-            val user = ParseUser.getCurrentUser()
-//            Log.i(TAG, user.toString())
-//            signUpUserPeriodAndCycleLength(user)
         }
     }
 
@@ -36,7 +33,9 @@ class GetStartedActivity : AppCompatActivity() {
             if (e == null) {
                 Log.i(TAG, "Successfully signed up user")
                 Toast.makeText(this, "Successfully signing up", Toast.LENGTH_SHORT).show()
-                goToQuestionnaire()
+                Log.i(TAG, user.objectId)
+                signUpUserPeriodAndCycleLength(user)
+                //goToQuestionnaire()
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Error signing up", Toast.LENGTH_SHORT).show()
@@ -44,28 +43,18 @@ class GetStartedActivity : AppCompatActivity() {
         }
     }
 
-//    private fun signUpUserPeriodAndCycleLength(user : ParseUser) {
-//        //Create the UserPeriodAndCycleLength
-//        val userPeriodAndCycleLength = UserPeriodAndCycleLength()
-//
-//        userPeriodAndCycleLength.setUser(user)
-//        userPeriodAndCycleLength.setCycleLength(0)
-//        userPeriodAndCycleLength.setPeriodLength(0)
-//
-//        Log.i(TAG, userPeriodAndCycleLength.toString())
-//        userPeriodAndCycleLength.saveInBackground { exception ->
-//            if (exception != null) {
-//                //Something has went wrong
-//                Log.e(TAG, "Error while saving userPeriodAndCycleLength")
-//                Toast.makeText(this, "Error saving userPeriodAndCycleLength", Toast.LENGTH_SHORT).show()
-//                exception.printStackTrace()
-//            } else {
-//                Log.i(TAG, "Successfully saved userPeriodAndCycleLength")
-//                Toast.makeText(this,"userPeriodAndCycleLength has been uploaded.", Toast.LENGTH_SHORT).show()
-//                goToQuestionnaire()
-//            }
-//        }
-//    }
+    private fun signUpUserPeriodAndCycleLength(user : ParseUser) {
+        val userPeriodAndCycleLength = ParseObject("UserPeriodAndCycleLength")
+        userPeriodAndCycleLength.put("user", user)
+        userPeriodAndCycleLength.saveInBackground {
+            if (it != null){
+                it.localizedMessage?.let { message -> Log.e(TAG, message) }
+            }else{
+                Log.d(TAG,"userPeriodAndCycleLength object saved.")
+                goToQuestionnaire()
+            }
+        }
+    }
 
     private fun goToQuestionnaire() {
         val intent = Intent(this@GetStartedActivity, QuestionnaireActivity::class.java)
