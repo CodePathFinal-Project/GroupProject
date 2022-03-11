@@ -24,6 +24,10 @@ class DailyInputActivity : AppCompatActivity() {
         headacheSeekBar = findViewById(R.id.headacheBar)
         fatigueSeekBar = findViewById(R.id.fatigueBar)
 
+        //TODO: Change the startData and endData to ToggleButton
+        //TODO: Might need to have find a way to persist the turn on of the Toggle Button
 
+        //TODO: write saveStartDate -> post a new object with endDate - 1 to the server or delete an object from the server
+        //TODO: write saveEndData -> look for the object with endDate -1 and update the endDate
     }
 }
