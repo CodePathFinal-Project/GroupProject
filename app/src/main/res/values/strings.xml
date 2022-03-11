@@ -15,4 +15,5 @@
     <!--    for Calendar add dailyInput Pop up menu-->
     <string name="view_dailyInput">View Daily Input</string>
     <string name="add_dailyInput">Add Daily Input</string>
+    <string name="daily_input_date">Clicked date</string>
 </resources>
