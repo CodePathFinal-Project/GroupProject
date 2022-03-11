@@ -23,7 +23,6 @@ import java.util.Calendar
 
 // TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
 // TODO: Show all the period cycle on the calendar view
-
 class Calendar : AppCompatActivity() {
 
     lateinit var mmmmYYYY : TextView
@@ -58,16 +57,45 @@ class Calendar : AppCompatActivity() {
         // Use constants provided by Java Calendar class
 
         // Add event on Feb 22, 2022
-        val ev1 = Event(Color.GREEN, 1645516800000, "Some extra data that I want to store.")
-        compactCalendarView.addEvent(ev1)
+        var ev = Event(Color.GREEN, 1645516800000, "Some extra data that I want to store.")
+        compactCalendarView.addEvent(ev)
 
         // Added event Feb 23, 2022
-        val ev2 = Event(Color.GREEN, 1645603200000)
-        compactCalendarView.addEvent(ev2)
+        ev = Event(Color.GREEN, 1645603200000)
+        compactCalendarView.addEvent(ev)
 
         // Added event Feb 23 ,2022
-        val ev3 = Event(Color.CYAN, 1644739200000)
-        compactCalendarView.addEvent(ev3)
+        val temp = 1644739200000
+        ev = Event(Color.CYAN, temp)
+        compactCalendarView.addEvent(ev)
+
+        //Added event to the last startedAt March 05, 2022
+        if (allCycles.size !=  0) {
+                Log.i(TAG, "allCycles is not empty!!")
+//            val cycle = allCycles[0]
+//            Log.i(TAG, )
+//            for (cycle in allCycles) {
+//                val temp = cycle.getStartedAt()
+//                Log.i(TAG, "Inside the for loop")
+//                val ev = Event(Color.CYAN, temp)
+//                compactCalendarView.addEvent(ev)
+        } else {
+            Log.i(TAG, "allCycles is empty!!")
+        }
+
+        //TODO : Try to show the cycle on the calendar on March 05 - March 12 and Feb 20 - Feb 25
+//        if (allCycles != null) {
+//            for (cycle in allCycles) {
+//                var startedAt = cycle.getStartedAt()
+//                var endedAt = cycle.getEndedAt()
+//                val oneDayinMilliSec = 86400000.toLong()
+//                for (day in startedAt..(endedAt+1) step oneDayinMilliSec) {
+//                    Log.i(TAG, "Reach this for loop")
+//                    ev = Event(Color.CYAN, 1644739200000)
+//                    compactCalendarView.addEvent(ev)
+//                }
+//            }
+//        }
 
         // Query for events on Sun, 07 Jun 2015 GMT.
         // Time is not relevant when querying for events, since events are returned by day.
@@ -77,6 +105,7 @@ class Calendar : AppCompatActivity() {
 
         // events has size 2 with the 2 events inserted previously
         Log.d(TAG, "Events: $events")
+
 
         // define a listener to receive callbacks when certain events happen.
         compactCalendarView.setListener(object : CompactCalendarView.CompactCalendarViewListener {
@@ -101,11 +130,7 @@ class Calendar : AppCompatActivity() {
             }
 
         })
-
     }
-
-
-
 
     private fun fetchCycles() {
         //Specify the class query
@@ -115,10 +140,10 @@ class Calendar : AppCompatActivity() {
         query.include(Cycle.KEY_USER)
         //Only return cycles from currently signed in user
         query.whereEqualTo(Cycle.KEY_USER, ParseUser.getCurrentUser())
-        query.addAscendingOrder("startedAt")
+        query.addDescendingOrder(Cycle.KEY_STARTED_AT)
 
         //Only return the most recent 5 cycles
-        query.setLimit(5)
+        query.setLimit(2)
 
         query.findInBackground (object : FindCallback<Cycle> {
                 override fun done(cycles: MutableList<Cycle>?, e: ParseException?) {
@@ -129,7 +154,9 @@ class Calendar : AppCompatActivity() {
                         if (cycles != null) {
                             for (cycle in cycles) {
                                 Log.i(
-                                    TAG, "Cycle: " + cycle.getStartedAt() + ", username:" + cycle.getUser()?.username
+                                    TAG, "Cycle startedAt: " + cycle.getStartedAt().toString()
+                                            + ", endedAt: " + cycle.getEndedAt().toString()
+                                            + ", username:" + cycle.getUser()?.username
                                 )
                             }
                             allCycles.clear()
