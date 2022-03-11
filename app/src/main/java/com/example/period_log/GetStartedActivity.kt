@@ -43,11 +43,12 @@ class GetStartedActivity : AppCompatActivity() {
     }
 
     private fun signUpUserPeriodAndCycleLength(user : ParseUser) {
-        val userPeriodAndCycleLength = ParseObject("UserPeriodAndCycleLength")
-        userPeriodAndCycleLength.put("user", user)
+        val userPeriodAndCycleLength = UserPeriodAndCycleLength()
+        userPeriodAndCycleLength.setUser(user)
         userPeriodAndCycleLength.saveInBackground {
             if (it != null){
                 it.localizedMessage?.let { message -> Log.e(TAG, message) }
+                Toast.makeText(this, "Error saving userPeriodAndCycle object.", Toast.LENGTH_SHORT).show()
             }else{
                 Log.d(TAG,"userPeriodAndCycleLength object saved.")
                 goToQuestionnaire()
