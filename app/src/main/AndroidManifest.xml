@@ -38,7 +38,6 @@
 
         <activity android:name=".SettingsActivity" />
         <activity android:name=".AccountSettingsActivity" />
-        <activity android:name=".CycleSettingsActivity" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"
