@@ -2,10 +2,7 @@ package com.example.period_log
 
 import com.parse.ParseClassName
 import com.parse.ParseObject
-import com.parse.Parse
 import com.parse.ParseUser
-
-//import com.parse.ParseUser
 
 //user : User
 //startedAt : Int (milliseconds)
