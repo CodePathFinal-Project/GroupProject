@@ -22,9 +22,9 @@ import java.time.LocalDateTime
 class Calendar : AppCompatActivity() {
 
     lateinit var mmmmYYYY : TextView
-    lateinit var mYEdited : String
     lateinit var btnSettings: ImageButton
     val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,8 +69,9 @@ class Calendar : AppCompatActivity() {
         // define a listener to receive callbacks when certain events happen.
         compactCalendarView.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             override fun onDayClick(dateClicked: Date) {
-                val events: List<Event> = compactCalendarView.getEvents(dateClicked)
-                var temp = dateClicked.time
+//                val events: List<Event> = compactCalendarView.getEvents(dateClicked)
+                temp = dateClicked.time
+                mYEdited = dateClicked.toString()
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
                 Toast.makeText(this@Calendar, "$temp", Toast.LENGTH_SHORT).show()
                 showPopup(compactCalendarView)
@@ -80,7 +81,7 @@ class Calendar : AppCompatActivity() {
 
             override fun onMonthScroll(firstDayOfNewMonth: Date) {
                 Log.d(TAG, "Month was scrolled to: $firstDayOfNewMonth")
-                var temp1 = firstDayOfNewMonth.time //returns milliseconds
+                temp1 = firstDayOfNewMonth.time //returns milliseconds
                 //milliseconds to Date class
                 Toast.makeText(this@Calendar, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
                 mYEdited = firstDayOfNewMonth.toString()
@@ -120,5 +121,8 @@ class Calendar : AppCompatActivity() {
         var TAG = "HI"
         val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
             "Aug", "Sep", "Oct", "Nov", "Dec")
+        var temp : Long = 0
+        var temp1 : Long = 0
+        var mYEdited : String =""
     }
 }
