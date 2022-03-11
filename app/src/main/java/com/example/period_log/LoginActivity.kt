@@ -14,13 +14,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_layout)
 
-        // Check if there is a user logged in.
-        // If there is, take them to Calendar
-        if (ParseUser.getCurrentUser() != null) {
-            goToCalendar()
-        }
-
-
         findViewById<Button>(R.id.logInBtn).setOnClickListener{
             val username = findViewById<EditText>(R.id.usernameEt).text.toString()
             val password = findViewById<EditText>(R.id.passwordEt).text.toString()

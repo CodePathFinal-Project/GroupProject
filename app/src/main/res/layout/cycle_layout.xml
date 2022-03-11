@@ -14,9 +14,12 @@
         android:text="Cycle"
         android:textColor="@color/pink_light"
         android:textSize="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveCycle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/textPeriodLength"

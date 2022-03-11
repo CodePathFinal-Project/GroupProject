@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.parse.ParseObject
 import com.parse.ParseUser
 
 class GetStartedActivity : AppCompatActivity() {
@@ -30,8 +31,10 @@ class GetStartedActivity : AppCompatActivity() {
 
         user.signUpInBackground{ e ->
             if (e == null) {
-                Log.i(TAG, "successfully signed up user")
-                goToQuestionaire()
+                Log.i(TAG, "Successfully signed up user")
+                Toast.makeText(this, "Successfully signing up", Toast.LENGTH_SHORT).show()
+                Log.i(TAG, user.objectId)
+                signUpUserPeriodAndCycleLength(user)
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Error signing up", Toast.LENGTH_SHORT).show()
@@ -39,7 +42,20 @@ class GetStartedActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToQuestionaire() {
+    private fun signUpUserPeriodAndCycleLength(user : ParseUser) {
+        val userPeriodAndCycleLength = ParseObject("UserPeriodAndCycleLength")
+        userPeriodAndCycleLength.put("user", user)
+        userPeriodAndCycleLength.saveInBackground {
+            if (it != null){
+                it.localizedMessage?.let { message -> Log.e(TAG, message) }
+            }else{
+                Log.d(TAG,"userPeriodAndCycleLength object saved.")
+                goToQuestionnaire()
+            }
+        }
+    }
+
+    private fun goToQuestionnaire() {
         val intent = Intent(this@GetStartedActivity, QuestionnaireActivity::class.java)
         startActivity(intent)
     }

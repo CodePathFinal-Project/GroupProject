@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_crick"
+        android:id="@+id/action_viewDI"
         android:title="@string/view_dailyInput"
-        app:showAsAction="never"/>
+        app:showAsAction="never"
+        />
     <item
-        android:id="@+id/action_ftbal"
+        android:id="@+id/action_addDI"
         android:title="@string/add_dailyInput"
         app:showAsAction="never"/>
+
 </menu>
+

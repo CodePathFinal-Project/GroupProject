@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SettingsActivity : AppCompatActivity() {
@@ -18,7 +19,6 @@ class SettingsActivity : AppCompatActivity() {
 
         var buttonCycle = findViewById<Button>(R.id.buttonCycle)
         buttonCycle.setOnClickListener {
-
             gotoCycleSettingsActivity()
         }
     }
@@ -33,8 +33,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun gotoCycleSettingsActivity() {
+        Log.d(Calendar.TAG, "Cycle button clicked should direct to CycleSettings")
+        Toast.makeText(this, "cycle btn", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, CycleSettingsActivity::class.java)
         startActivity(intent)
+
     }
 
 }

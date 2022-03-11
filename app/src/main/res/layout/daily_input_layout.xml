@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,48 +8,53 @@
     <Button
         android:id="@+id/saveDate"
         android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="564dp"
+        android:layout_height="34dp"
         android:background="@color/mint_dirty"
         android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876" />
+
 
     <TextView
         android:id="@+id/textDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:gravity="center"
         android:inputType="date"
+        android:text="Mon, Jan 13"
         android:textColor="@color/pink_light"
         android:textSize="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mon, Jan 13" />
+        app:layout_constraintVertical_bias="0.136" />
 
-    <TextView
-        android:id="@+id/textStartDate"
-        android:layout_width="160dp"
-        android:layout_height="55dp"
-        android:gravity="center"
-        android:text="Start date"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="136dp"
-        android:textColor="@color/pink_light"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/buttonEndDate"
+        android:layout_width="135dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button"
+        android:text="Select date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toEndOf="@+id/textEndDate"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartDate"
+        tools:text="19 Jan" />
 
     <TextView
         android:id="@+id/textEndDate"
-        android:layout_width="160dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="135dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="End date"
         android:textColor="@color/pink_light"
@@ -58,103 +62,128 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textStartDate" />
 
+    <TextView
+        android:id="@+id/textStartDate"
+        android:layout_width="135dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="Start date"
+        android:textColor="@color/pink_light"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDate" />
+
     <Button
         android:id="@+id/buttonStartDate"
-        android:layout_width="110dp"
+        android:layout_width="135dp"
         android:layout_height="38dp"
-        android:layout_marginTop="144dp"
-        android:text="Select date"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/button"
+        android:text="Select date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toEndOf="@+id/textStartDate"
+        app:layout_constraintTop_toBottomOf="@+id/textDate"
         tools:text="13 Jan" />
-
-    <Button
-        android:id="@+id/buttonEndDate"
-        android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="228dp"
-        android:background="@drawable/button"
-        android:text="Select date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="19 Jan" />
-
-    <TextView
-        android:id="@+id/cramps"
-        android:layout_width="92dp"
-        android:layout_height="27dp"
-        android:gravity="center"
-        android:text="cramps"
-        android:textColor="#E1D3E9"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="332dp" />
 
     <SeekBar
         android:id="@+id/crampsBar"
-        android:layout_width="196dp"
-        android:layout_height="12dp"
+        android:layout_width="144dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="40dp"
         android:thumbTint="#E1D3E9"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="340dp" />
-
-
-    <TextView
-        android:id="@+id/fatigue"
-        android:layout_width="92dp"
-        android:layout_height="27dp"
-        android:gravity="center"
-        android:text="fatigue"
-        android:textColor="#E1D3E9"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="477dp" />
-
-    <SeekBar
-        android:id="@+id/fatigueBar"
-        android:layout_width="196dp"
-        android:layout_height="12dp"
-        android:thumbTint="#E1D3E9"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="485dp" />
-
-    <TextView
-        android:id="@+id/headache"
-        android:layout_width="92dp"
-        android:layout_height="27dp"
-        android:gravity="center"
-        android:text="headache"
-        android:textColor="#E1D3E9"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="428dp" />
-
-    <SeekBar
-        android:id="@+id/headacheBar"
-        android:layout_width="196dp"
-        android:layout_height="12dp"
-        android:thumbTint="#E1D3E9"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEndDate" />
 
     <TextView
         android:id="@+id/acne"
-        android:layout_width="92dp"
-        android:layout_height="27dp"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="acne"
         android:textColor="#E1D3E9"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="380dp" />
+        app:layout_constraintEnd_toStartOf="@+id/acneBar"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cramps" />
+
+    <TextView
+        android:id="@+id/headache"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="headache"
+        android:textColor="#E1D3E9"
+        app:layout_constraintEnd_toStartOf="@+id/headacheBar"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acne" />
+
+    <TextView
+        android:id="@+id/fatigue"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="fatigue"
+        android:textColor="#E1D3E9"
+        app:layout_constraintEnd_toStartOf="@+id/fatigueBar"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headache" />
+
+    <TextView
+        android:id="@+id/cramps"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="cramps"
+        android:textColor="#E1D3E9"
+        app:layout_constraintEnd_toStartOf="@+id/crampsBar"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEndDate" />
+
+    <SeekBar
+        android:id="@+id/fatigueBar"
+        android:layout_width="144dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:thumbTint="#E1D3E9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headacheBar" />
 
     <SeekBar
         android:id="@+id/acneBar"
-        android:layout_width="196dp"
-        android:layout_height="12dp"
+        android:layout_width="144dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
         android:thumbTint="#E1D3E9"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="388dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crampsBar" />
+
+    <SeekBar
+        android:id="@+id/headacheBar"
+        android:layout_width="144dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:thumbTint="#E1D3E9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acneBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
