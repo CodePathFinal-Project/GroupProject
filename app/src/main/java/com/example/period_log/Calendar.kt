@@ -8,14 +8,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.Gravity
-import android.view.View
 import android.widget.*
-import androidx.core.view.isVisible
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
+import com.parse.FindCallback
+import com.parse.ParseException
+import com.parse.ParseQuery
+import com.parse.ParseUser
 import java.util.*
 import java.util.Calendar
-import java.time.LocalDateTime
+
 
 // TODO: Add a refresh button to the calendarView -> so we could show the recent cycle
 
@@ -29,6 +31,9 @@ class Calendar : AppCompatActivity() {
     val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
 
 
+    var allCycles: MutableList<Cycle> = mutableListOf()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
@@ -36,13 +41,18 @@ class Calendar : AppCompatActivity() {
         mmmmYYYY = findViewById(R.id.tvMonth)
         mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
 
+        //REFRESH BUTTON
+        //TODO: refresh button where its on clickListener call fetchCycles
+
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
         btnSettings.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
+
+            //TODO: Test the fetchQuery
+            fetchCycles()
             startActivity(intent)
         }
-
 
         val compactCalendarView: CompactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
         // Set first day of week to Monday, defaults to Monday so calling setFirstDayOfWeek is not necessary
@@ -93,7 +103,45 @@ class Calendar : AppCompatActivity() {
             }
 
         })
+
     }
+
+
+
+
+    private fun fetchCycles() {
+        //Specify the class query
+        val query : ParseQuery<Cycle> = ParseQuery.getQuery(Cycle::class.java)
+        //Find all objects
+        //This is line is added because user is a pointer
+        query.include(Cycle.KEY_USER)
+        //Only return cycles from currently signed in user
+        query.whereEqualTo(Cycle.KEY_USER, ParseUser.getCurrentUser())
+        query.addAscendingOrder("startedAt")
+
+        //Only return the most recent 5 cycles
+        query.setLimit(5)
+
+        query.findInBackground (object : FindCallback<Cycle> {
+                override fun done(cycles: MutableList<Cycle>?, e: ParseException?) {
+                    if (e != null) {
+                        //Something went wrong
+                        Log.e(TAG, "Error fetching posts")
+                    } else {
+                        if (cycles != null) {
+                            for (cycle in cycles) {
+                                Log.i(
+                                    TAG, "Cycle: " + cycle.getStartedAt() + ", username:" + cycle.getUser()?.username
+                                )
+                            }
+                            allCycles.clear()
+                            allCycles.addAll(cycles)
+                        }
+                    }
+
+                }
+            })
+        }
 
     private fun showPopup(v : CompactCalendarView){
         val popupMenu: PopupMenu = PopupMenu(wrapper, v, Gravity.FILL_VERTICAL) //gravity.right? or sliding window?
@@ -120,7 +168,7 @@ class Calendar : AppCompatActivity() {
     }
 
     companion object{
-        var TAG = "HI"
+        var TAG = "Calendar"
         val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
             "Aug", "Sep", "Oct", "Nov", "Dec")
         var temp : Long = 0

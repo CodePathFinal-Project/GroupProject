@@ -18,7 +18,7 @@ import com.parse.ParseObject
 
 class QuestionnaireActivity : AppCompatActivity() {
 
-    lateinit var currUserPeriodAndCycleLength : ParseObject
+    lateinit var currUserPeriodAndCycleLength : UserPeriodAndCycleLength
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +41,14 @@ class QuestionnaireActivity : AppCompatActivity() {
 
     private  fun savePeriodAndCycleLength(user: ParseUser, periodLength : Int, cycleLength : Int) {
         //Get all objects in our back4app UserPeriodAndCycleLength
-        val query: ParseQuery<ParseObject> = ParseQuery.getQuery("UserPeriodAndCycleLength")
+        val query : ParseQuery<UserPeriodAndCycleLength> = ParseQuery.getQuery(UserPeriodAndCycleLength::class.java)
         //This line is added because user is a pointer
-        query.include("user")
+        query.include(UserPeriodAndCycleLength.KEY_USER)
 //        //Only return the periodAndCycleLength from the current user
-        query.whereEqualTo("user", user)
+        query.whereEqualTo(UserPeriodAndCycleLength.KEY_USER, user)
         //Retrieve the objectId by userId
-        query.findInBackground(object: FindCallback<ParseObject> {
-            override fun done(usersPeriodAndCycleLength : MutableList<ParseObject>?, e: ParseException?) {
+        query.findInBackground(object: FindCallback<UserPeriodAndCycleLength> {
+            override fun done(usersPeriodAndCycleLength : MutableList<UserPeriodAndCycleLength>?, e: ParseException?) {
                 if (e != null) {
                     //Something went wrong
                     Log.e(TAG, "Error fetching userPeriodCycleLength")
@@ -62,10 +62,9 @@ class QuestionnaireActivity : AppCompatActivity() {
                             // Retrieve the object by id
                             query.getInBackground(currUserPeriodAndCycleLength.objectId) { currUserPeriodAndCycleLength, e ->
                                 if (e == null) {
-                                    // Now let's update it with some new data. In this case, only cheatMode and score
-                                    // will get sent to your Parse Server. playerName hasn't changed.
-                                    currUserPeriodAndCycleLength.put("periodLength", periodLength)
-                                    currUserPeriodAndCycleLength.put("cycleLength", cycleLength)
+                                    // Update it periodLength and cycleLength and will get sent to your Parse Server.
+                                    currUserPeriodAndCycleLength.put(UserPeriodAndCycleLength.KEY_PERIOD_LENGTH, periodLength)
+                                    currUserPeriodAndCycleLength.put(UserPeriodAndCycleLength.KEY_CYCLE_LENGTH, cycleLength)
                                     currUserPeriodAndCycleLength.saveInBackground()
                                     Log.e(TAG, "Successfully updating periodLength and cycleLength")
                                     Toast.makeText(this@QuestionnaireActivity, "Period and cycle length are updated", Toast.LENGTH_SHORT).show()
