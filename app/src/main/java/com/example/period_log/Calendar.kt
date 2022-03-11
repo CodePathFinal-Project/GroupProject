@@ -17,7 +17,10 @@ import java.util.*
 import java.util.Calendar
 import java.time.LocalDateTime
 
-// TODO: add settings button to the calendar view
+// TODO: Add a refresh button to the calendarView -> so we could show the recent cycle
+
+// TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
+// TODO: Show all the period cycle on the calendar view
 
 class Calendar : AppCompatActivity() {
 
@@ -114,7 +117,6 @@ class Calendar : AppCompatActivity() {
     private fun gotoDailyInputActivity() {
         val intent = Intent(this, DailyInputActivity::class.java)
         startActivity(intent)
-
     }
 
     companion object{
