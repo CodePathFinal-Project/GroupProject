@@ -21,7 +21,6 @@
             android:name=".Calendar"
             android:exported="false" />
 
-        <!--         android:name=".MainActivity"-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
