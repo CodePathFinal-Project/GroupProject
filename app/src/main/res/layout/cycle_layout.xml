@@ -25,59 +25,66 @@
         android:id="@+id/textPeriodLength"
         android:layout_width="160dp"
         android:layout_height="55dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="36dp"
         android:gravity="center"
         android:text="Period Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonStartDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonCycleLength"
-        android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="208dp"
-        android:background="@drawable/button"
-        android:text="Select days"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/PeriodLengthET_setting"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="28 days" />
+        app:layout_constraintVertical_bias="0.173" />
 
-    <Button
-        android:id="@+id/buttonStartDate"
+    <EditText
+        android:id="@+id/PeriodLengthET_setting"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/button"
-        android:text="Select days"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCycleLength"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/CycleLengthET_setting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintHorizontal_bias="0.83"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="7 days" />
+        tools:hint="Enter number" />
+
+    <EditText
+        android:id="@+id/CycleLengthET_setting"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:inputType="number"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.292"
+        tools:hint="Enter number" />
 
     <TextView
         android:id="@+id/textCycleLength"
         android:layout_width="160dp"
         android:layout_height="55dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="36dp"
         android:gravity="center"
         android:text="Cycle Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCycleLength"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintEnd_toStartOf="@+id/CycleLengthET_setting"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPeriodLength"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286" />
 
     <Button
         android:id="@+id/saveCycle"
