@@ -3,7 +3,6 @@ package com.example.period_log
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import com.github.sundeepk.compactcalendarview.CompactCalendarView
 
 class DailyInputActivity : AppCompatActivity() {
 
@@ -15,8 +14,8 @@ class DailyInputActivity : AppCompatActivity() {
     lateinit var headacheSeekBar: SeekBar
     lateinit var fatigueSeekBar: SeekBar
     lateinit var btnSave: Button
-    lateinit var dateString: String
-
+//    lateinit var dateString: String
+    lateinit var datePicker: DatePicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +27,7 @@ class DailyInputActivity : AppCompatActivity() {
         acneSeekBar = findViewById(R.id.acneBar)
         headacheSeekBar = findViewById(R.id.headacheBar)
         fatigueSeekBar = findViewById(R.id.fatigueBar)
-        btnSave = findViewById(R.id.saveDate)
+        btnSave = findViewById(R.id.btnSaveDate)
         startDate =findViewById(R.id.etStartDate)
         endDate =findViewById(R.id.etEndDate)
 
@@ -92,6 +91,8 @@ class DailyInputActivity : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             //if symptoms all 0, ask if user wants to save empty symptoms?
+            //save button saves date, symptoms values to parse
+
         }
 
 

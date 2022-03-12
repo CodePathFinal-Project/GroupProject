@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button android:id="@+id/saveDate"
+    <Button
+        android:id="@+id/btnSaveDate"
         android:layout_width="110dp"
         android:layout_height="34dp"
         android:background="@color/mint_dirty"
@@ -26,11 +27,13 @@
         android:textSize="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.115" />
 
-    <EditText android:id="@+id/etStartDate"
+    <EditText
+        android:id="@+id/etStartDate"
         android:layout_width="135dp"
         android:layout_height="38dp"
         android:layout_marginStart="20dp"
@@ -38,16 +41,17 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/button"
         android:hint="Select date"
-        android:textColorHint="@color/white"
+        android:inputType="date|datetime"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:inputType="datetime"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/textStartDate"
         app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
-    <EditText android:id="@+id/etEndDate"
+    <EditText
+        android:id="@+id/etEndDate"
         android:layout_width="135dp"
         android:layout_height="38dp"
         android:layout_marginStart="20dp"
@@ -55,15 +59,16 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/button"
         android:hint="Select date"
-        android:textColorHint="@color/white"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/textEndDate"
         app:layout_constraintTop_toBottomOf="@+id/etStartDate" />
 
-    <TextView android:id="@+id/textStartDate"
+    <TextView
+        android:id="@+id/textStartDate"
         android:layout_width="135dp"
         android:layout_height="34dp"
         android:layout_marginStart="60dp"
@@ -75,7 +80,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
-    <TextView android:id="@+id/textEndDate"
+    <TextView
+        android:id="@+id/textEndDate"
         android:layout_width="135dp"
         android:layout_height="34dp"
         android:layout_marginStart="60dp"
@@ -87,7 +93,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textStartDate" />
 
-    <TextView android:id="@+id/acne"
+    <TextView
+        android:id="@+id/acne"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
@@ -100,7 +107,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cramps" />
 
-    <TextView android:id="@+id/headache"
+    <TextView
+        android:id="@+id/headache"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
@@ -113,7 +121,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acne" />
 
-    <TextView android:id="@+id/fatigue"
+    <TextView
+        android:id="@+id/fatigue"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
@@ -126,7 +135,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headache" />
 
-    <TextView android:id="@+id/cramps"
+    <TextView
+        android:id="@+id/cramps"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
@@ -139,47 +149,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEndDate" />
 
-    <SeekBar android:id="@+id/crampsBar"
+    <SeekBar
+        android:id="@+id/crampsBar"
         android:layout_width="144dp"
         android:layout_height="34dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="40dp"
-        android:thumbTint="#E1D3E9"
         android:max="10"
         android:progress="0"
+        android:thumbTint="#E1D3E9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEndDate" />
 
-    <SeekBar android:id="@+id/fatigueBar"
+    <SeekBar
+        android:id="@+id/fatigueBar"
         android:layout_width="144dp"
         android:layout_height="34dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
-        android:thumbTint="#E1D3E9"
         android:max="10"
         android:progress="0"
+        android:thumbTint="#E1D3E9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headacheBar" />
 
-    <SeekBar android:id="@+id/acneBar"
+    <SeekBar
+        android:id="@+id/acneBar"
         android:layout_width="144dp"
         android:layout_height="34dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
-        android:thumbTint="#E1D3E9"
         android:max="10"
         android:progress="0"
+        android:thumbTint="#E1D3E9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crampsBar" />
 
-    <SeekBar android:id="@+id/headacheBar"
+    <SeekBar
+        android:id="@+id/headacheBar"
         android:layout_width="144dp"
         android:layout_height="34dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
-        android:thumbTint="#E1D3E9"
         android:max="10"
         android:progress="0"
+        android:thumbTint="#E1D3E9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/acneBar" />
 

@@ -62,7 +62,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_settings_24" />
 
-<!--    <Button-->
+    <Button
+        android:id="@+id/Refreshbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/tvCalendar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <Button-->
 <!--        android:id="@+id/btnViewDailyInput"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->

@@ -41,7 +41,6 @@ class QuestionnaireActivity : AppCompatActivity() {
             //Get periodLength and cycleLength from the EditText
             val periodLength = periodLengthEt.text.toString().toInt()
             val cycleLength = cycleLengthEt.text.toString().toInt()
-
             savePeriodAndCycleLength(user, periodLength, cycleLength)
         }
     }
