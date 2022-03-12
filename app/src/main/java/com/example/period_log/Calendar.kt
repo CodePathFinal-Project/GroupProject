@@ -28,9 +28,10 @@ class Calendar : AppCompatActivity() {
     lateinit var mmmmYYYY : TextView
     lateinit var mYEdited : String
     lateinit var btnSettings: ImageButton
+    lateinit var btnRefresh : Button
     val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
 
-    var allCycles: MutableList<Cycle> = mutableListOf()
+    //var allCycles: MutableList<Cycle> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,13 @@ class Calendar : AppCompatActivity() {
 
         //REFRESH BUTTON
         //TODO: refresh button where its on clickListener call fetchCycles
+        btnRefresh = findViewById<Button>(R.id.Refreshbutton)
+
+        btnRefresh.setOnClickListener {
+            fetchCycles()
+            startActivity(intent)
+            finish()
+        }
 
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
@@ -48,7 +56,7 @@ class Calendar : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
 
             //TODO: Test the fetchQuery
-            fetchCycles()
+            //fetchCycles()
             startActivity(intent)
         }
 
@@ -71,7 +79,7 @@ class Calendar : AppCompatActivity() {
 
         //Added event to the last startedAt March 05, 2022
         if (allCycles.size !=  0) {
-                Log.i(TAG, "allCycles is not empty!!")
+            Log.i(TAG, "allCycles is not empty!!")
 //            val cycle = allCycles[0]
 //            Log.i(TAG, )
 //            for (cycle in allCycles) {
@@ -161,6 +169,15 @@ class Calendar : AppCompatActivity() {
                             }
                             allCycles.clear()
                             allCycles.addAll(cycles)
+                            for (cycle in allCycles) {
+                                Log.i(
+                                    TAG, "Cycle startedAt: " + cycle.getStartedAt().toString()
+                                            + ", endedAt: " + cycle.getEndedAt().toString()
+                                            + ", username:" + cycle.getUser()?.username
+                                )
+                            }
+
+                            //TODO: notifyChanged to rerender the calendarView
                         }
                     }
 
@@ -196,5 +213,6 @@ class Calendar : AppCompatActivity() {
         var TAG = "Calendar"
         val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
             "Aug", "Sep", "Oct", "Nov", "Dec")
+        var allCycles: MutableList<Cycle> = mutableListOf()
     }
 }
