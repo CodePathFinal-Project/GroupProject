@@ -29,54 +29,53 @@
         android:text="Period Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/periodLengthEt"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/cycleLengthEt"
-        android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:inputType="number"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334"
-        tools:hint="Enter number" />
 
     <TextView
         android:id="@+id/cycleLengthTv"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Cycle Length"
         android:textColor="@color/pink_light"
         android:textSize="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/cycleLengthEt"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/periodLengthTv" />
 
     <EditText
         android:id="@+id/periodLengthEt"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:inputType="number"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/periodLengthTv"
+        app:layout_constraintTop_toBottomOf="@+id/textUser"
+        tools:hint="Enter number" />
+
+    <EditText
+        android:id="@+id/cycleLengthEt"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:inputType="number"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cycleLengthTv"
+        app:layout_constraintTop_toBottomOf="@+id/periodLengthEt"
         tools:hint="Enter number" />
 
     <Button

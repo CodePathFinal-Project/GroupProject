@@ -6,6 +6,7 @@ import android.os.UserHandle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parse.*
@@ -27,9 +28,15 @@ class QuestionnaireActivity : AppCompatActivity() {
         val saveBtn = findViewById<Button>(R.id.saveBtn)
         val periodLengthEt = findViewById<EditText>(R.id.periodLengthEt)
         val cycleLengthEt = findViewById<EditText>(R.id.cycleLengthEt)
+        val user = ParseUser.getCurrentUser()
+        val username = user.username.toString() // use this to display username in the questionnaire layout
+        val tv = findViewById<TextView>(R.id.textUser)
+        tv.setText("Hi " + username + "!")
 
+
+        // Saving all of the user input on the page
         saveBtn.setOnClickListener {
-            val user = ParseUser.getCurrentUser()
+            //val user = ParseUser.getCurrentUser()
             Toast.makeText(this,"Curr userId: ${user.objectId}", Toast.LENGTH_SHORT).show()
             //Get periodLength and cycleLength from the EditText
             val periodLength = periodLengthEt.text.toString().toInt()
@@ -68,6 +75,8 @@ class QuestionnaireActivity : AppCompatActivity() {
                                     currUserPeriodAndCycleLength.saveInBackground()
                                     Log.e(TAG, "Successfully updating periodLength and cycleLength")
                                     Toast.makeText(this@QuestionnaireActivity, "Period and cycle length are updated", Toast.LENGTH_SHORT).show()
+                                    // TODO: move to calendar view
+                                    gotoCalendarActivity()
                                 }
                                 else {
                                     Log.e(TAG, "There is an error updating periodLength and cycleLength")
@@ -79,6 +88,12 @@ class QuestionnaireActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun gotoCalendarActivity() {
+        Log.e(TAG, "Moving to Calendar page")
+        val intent = Intent(this, Calendar::class.java)
+        startActivity(intent)
     }
 
     companion object {
