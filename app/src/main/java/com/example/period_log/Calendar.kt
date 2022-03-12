@@ -30,12 +30,14 @@ class Calendar : AppCompatActivity() {
     lateinit var btnSettings: ImageButton
     lateinit var btnRefresh : Button
     val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
+    lateinit var compactCalendarView: CompactCalendarView
 
     //var allCycles: MutableList<Cycle> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
+        compactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
 
         mmmmYYYY = findViewById(R.id.tvMonth)
         mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
@@ -60,7 +62,7 @@ class Calendar : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val compactCalendarView: CompactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
+//        val compactCalendarView: CompactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
         // Set first day of week to Monday, defaults to Monday so calling setFirstDayOfWeek is not necessary
         // Use constants provided by Java Calendar class
 
