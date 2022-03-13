@@ -23,6 +23,8 @@ class DailyInputActivity : AppCompatActivity() {
 
         logDate = findViewById(R.id.textDate)
         logDate.setText(Calendar.mYEdited.substring(4, 10))
+
+
         crampsSeekBar = findViewById(R.id.crampsBar)
         acneSeekBar = findViewById(R.id.acneBar)
         headacheSeekBar = findViewById(R.id.headacheBar)

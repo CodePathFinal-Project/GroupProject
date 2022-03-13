@@ -62,6 +62,7 @@ class Calendar : AppCompatActivity() {
                 val events: List<Event> = compactCalendarView.getEvents(dateClicked)
                 var temp = dateClicked.time
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
+                mYEdited = dateClicked.toString()
                 Toast.makeText(this@Calendar, "$temp", Toast.LENGTH_SHORT).show()
                 showPopup(compactCalendarView)
                 //TODO: change position of the popup
@@ -143,11 +144,11 @@ class Calendar : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.action_viewDI -> {
-                    Toast.makeText(this@Calendar,"You Clicked : " + item.title,Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@Calendar,"You Clicked : " + item.title,Toast.LENGTH_SHORT).show()
                     gotoDailyInputActivity()
                 }
                 R.id.action_addDI -> {
-                    Toast.makeText(this@Calendar,"You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@Calendar,"You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
                     gotoDailyInputActivity()
                 }
             }
