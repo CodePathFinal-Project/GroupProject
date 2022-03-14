@@ -147,10 +147,6 @@ class Calendar : AppCompatActivity() {
                     //Toast.makeText(this@Calendar,"You Clicked : " + item.title,Toast.LENGTH_SHORT).show()
                     gotoDailyInputActivity()
                 }
-                R.id.action_addDI -> {
-                    //Toast.makeText(this@Calendar,"You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
-                    gotoDailyInputActivity()
-                }
             }
             true
         })

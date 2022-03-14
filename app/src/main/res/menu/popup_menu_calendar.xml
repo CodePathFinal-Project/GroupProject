@@ -6,10 +6,5 @@
         android:title="@string/view_dailyInput"
         app:showAsAction="never"
         />
-    <item
-        android:id="@+id/action_addDI"
-        android:title="@string/add_dailyInput"
-        app:showAsAction="never"/>
-
 </menu>
 

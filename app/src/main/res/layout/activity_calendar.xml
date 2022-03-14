@@ -19,6 +19,9 @@
         android:textAlignment="center"
         android:textColor="@color/pink_light"
         android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
 
@@ -39,7 +42,7 @@
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/compactcalendar_view"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:layout_marginTop="20dp"
         app:compactCalendarBackgroundColor="#E2D3E8"
         app:compactCalendarCurrentDayBackgroundColor="@color/purple_light"
@@ -49,6 +52,8 @@
         app:compactCalendarTargetHeight="400dp"
         app:compactCalendarTextColor="@color/white"
         app:compactCalendarTextSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMonth" />
 
     <ImageButton
@@ -70,17 +75,18 @@
         app:layout_constraintStart_toStartOf="@+id/tvCalendar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/btnViewDailyInput"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:backgroundTint="@color/pink_light"-->
-<!--        android:text="View Daily Input"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view"-->
-<!--        app:layout_constraintVertical_bias="0.355" />-->
+    <Button
+        android:id="@+id/btnViewDailyInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/pink_light"
+        android:text="@string/daily_input_on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view"
+        app:layout_constraintVertical_bias="0.63" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

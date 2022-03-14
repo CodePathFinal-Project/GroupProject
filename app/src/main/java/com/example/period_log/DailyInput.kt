@@ -41,11 +41,11 @@ class DailyInput : ParseObject() {
         put(KEY_FATIGUE, fatigue)
     }
 
-    fun getEnergy() : Any? {
-        return get(KEY_ENERGY)
+    fun getHeadache() : Any? {
+        return get(KEY_HEADACHE)
     }
-    fun setEnergy(energy: Int) {
-        put(KEY_ENERGY, energy)
+    fun setHeadache(energy: Int) {
+        put(KEY_HEADACHE, energy)
     }
 
     fun getAcne() : Any? {
@@ -61,7 +61,7 @@ class DailyInput : ParseObject() {
         const val KEY_CYCLE = "cycle"
         const val KEY_CRAMP = "cramp"
         const val KEY_FATIGUE = "fatigue"
-        const val KEY_ENERGY = "energy"
+        const val KEY_HEADACHE = "headache"
         const val KEY_ACNE = "acne"
     }
 }
