@@ -3,20 +3,18 @@ package com.example.period_log
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import com.github.sundeepk.compactcalendarview.CompactCalendarView
 
 class DailyInputActivity : AppCompatActivity() {
 
     lateinit var logDate: TextView
-    lateinit var startDate: EditText
-    lateinit var endDate: EditText
+//    lateinit var startDate: EditText
+//    lateinit var endDate: EditText
     lateinit var crampsSeekBar: SeekBar
     lateinit var acneSeekBar: SeekBar
     lateinit var headacheSeekBar: SeekBar
     lateinit var fatigueSeekBar: SeekBar
     lateinit var btnSave: Button
-    lateinit var dateString: String
-
+    lateinit var dailyInput: DailyInput
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +22,15 @@ class DailyInputActivity : AppCompatActivity() {
 
         logDate = findViewById(R.id.textDate)
         logDate.setText(Calendar.mYEdited.substring(4, 10))
+
+
         crampsSeekBar = findViewById(R.id.crampsBar)
         acneSeekBar = findViewById(R.id.acneBar)
         headacheSeekBar = findViewById(R.id.headacheBar)
         fatigueSeekBar = findViewById(R.id.fatigueBar)
-        btnSave = findViewById(R.id.saveDate)
-        startDate =findViewById(R.id.etStartDate)
-        endDate =findViewById(R.id.etEndDate)
+        btnSave = findViewById(R.id.btnSaveDate)
+//        startDate =findViewById(R.id.etStartDate)
+//        endDate =findViewById(R.id.etEndDate)
 
 
         var crampValue = 0
@@ -92,6 +92,11 @@ class DailyInputActivity : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             //if symptoms all 0, ask if user wants to save empty symptoms?
+            //save button saves date, symptoms values to parse
+            dailyInput.setAcne(acneValue)
+            dailyInput.setCramp(crampValue)
+            dailyInput.setFatigue(fatigueValue)
+            dailyInput.setHeadache(headacheValue)
         }
 
 

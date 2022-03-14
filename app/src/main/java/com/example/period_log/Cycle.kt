@@ -11,17 +11,17 @@ import com.parse.ParseUser
 class Cycle : ParseObject(){
 
     //TODO: getStartedAt, setStartedAt, getEndedAt, setEndedAt, getUser, setUser
-    fun getStartedAt(): Int? {
-        return getInt(KEY_STARTED_AT)
+    fun getStartedAt(): Long {
+        return getLong(KEY_STARTED_AT)
     }
-    fun setStartedAt(startAt: Int) {
+    fun setStartedAt(startAt: Long) {
         put(KEY_STARTED_AT,startAt )
     }
 
-    fun getEndedAt(): Int? {
-        return getInt(KEY_ENDED_AT)
+    fun getEndedAt(): Long {
+        return getLong(KEY_ENDED_AT)
     }
-    fun setEndedAt(endedAt: Int) {
+    fun setEndedAt(endedAt: Long) {
         put(KEY_ENDED_AT, endedAt)
     }
 
