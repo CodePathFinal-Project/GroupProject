@@ -23,13 +23,15 @@ import java.util.Calendar
 
 // TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
 // TODO: Show all the period cycle on the calendar view
-class Calendar : AppCompatActivity() {
+class CalendarActivity : AppCompatActivity() {
 
     lateinit var mmmmYYYY : TextView
     lateinit var btnSettings: ImageButton
-    lateinit var btnRefresh : Button
+//    lateinit var btnRefresh : Button
+    lateinit var btnDailyInput: Button
     val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
     lateinit var compactCalendarView: CompactCalendarView
+    lateinit var today : Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +39,28 @@ class Calendar : AppCompatActivity() {
         compactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
 
         fetchCycles()
+        mYEdited = Calendar.getInstance().time.toString()
         mmmmYYYY = findViewById(R.id.tvMonth)
-        mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
-
+        //mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
+        mmmmYYYY.setText(mYEdited.substring(4,8) + Calendar.getInstance().time.toString().substring(24,28))
 //        //REFRESH BUTTON
         //TODO: refresh button where its on clickListener call fetchCycles
-        btnRefresh = findViewById<Button>(R.id.Refreshbutton)
-
-        btnRefresh.setOnClickListener {
-            startActivity(intent)
-            finish()
-        }
+//        btnRefresh = findViewById<Button>(R.id.Refreshbutton)
+//
+//        btnRefresh.setOnClickListener {
+//            startActivity(intent)
+//            finish()
+//        }
 
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
         btnSettings.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+        }
+        btnDailyInput = findViewById(R.id.btnViewDailyInput)
+        btnDailyInput.setOnClickListener {
+            gotoDailyInputActivity()
         }
 
         // define a listener to receive callbacks when certain events happen.
@@ -63,8 +70,8 @@ class Calendar : AppCompatActivity() {
                 var temp = dateClicked.time
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
                 mYEdited = dateClicked.toString()
-                Toast.makeText(this@Calendar, "$temp", Toast.LENGTH_SHORT).show()
-                showPopup(compactCalendarView)
+                Toast.makeText(this@CalendarActivity, "$temp", Toast.LENGTH_SHORT).show()
+                //showPopup(compactCalendarView)
                 //TODO: change position of the popup
                 //TODO: fetch user data when view daily input (only if exists)
             }
@@ -73,7 +80,7 @@ class Calendar : AppCompatActivity() {
                 Log.d(TAG, "Month was scrolled to: $firstDayOfNewMonth")
                 var temp1 = firstDayOfNewMonth.time //returns milliseconds
                 //milliseconds to Date class
-                Toast.makeText(this@Calendar, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CalendarActivity, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
                 mYEdited = firstDayOfNewMonth.toString()
                 mmmmYYYY.setText(mYEdited.substring(4,8) + mYEdited.substring(24,28))
 
@@ -160,8 +167,8 @@ class Calendar : AppCompatActivity() {
 
     companion object{
         var TAG = "Calendar"
-        val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-            "Aug", "Sep", "Oct", "Nov", "Dec")
+//        val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+//            "Aug", "Sep", "Oct", "Nov", "Dec")
         var allCycles: MutableList<Cycle> = mutableListOf()
         var mYEdited = ""
     }

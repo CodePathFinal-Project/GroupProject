@@ -2,7 +2,6 @@ package com.example.period_log
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.UserHandle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -10,11 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parse.*
-import com.parse.GetCallback
-import com.parse.ParseObject
-
-
-
 
 
 class QuestionnaireActivity : AppCompatActivity() {
@@ -91,7 +85,7 @@ class QuestionnaireActivity : AppCompatActivity() {
 
     private fun gotoCalendarActivity() {
         Log.e(TAG, "Moving to Calendar page")
-        val intent = Intent(this, Calendar::class.java)
+        val intent = Intent(this, CalendarActivity::class.java)
         startActivity(intent)
     }
 

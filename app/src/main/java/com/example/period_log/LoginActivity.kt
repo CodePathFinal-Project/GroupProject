@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun goToCalendar() {
-        val intent = Intent(this@LoginActivity, Calendar::class.java)
+        val intent = Intent(this@LoginActivity, CalendarActivity::class.java)
         startActivity(intent)
         finish()
     }

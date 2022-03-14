@@ -21,7 +21,7 @@ class DailyInputActivity : AppCompatActivity() {
         setContentView(R.layout.daily_input_layout)
 
         logDate = findViewById(R.id.textDate)
-        logDate.setText(Calendar.mYEdited.substring(4, 10))
+        logDate.setText(CalendarActivity.mYEdited.substring(4, 10))
 
 
         crampsSeekBar = findViewById(R.id.crampsBar)
@@ -97,6 +97,7 @@ class DailyInputActivity : AppCompatActivity() {
             dailyInput.setCramp(crampValue)
             dailyInput.setFatigue(fatigueValue)
             dailyInput.setHeadache(headacheValue)
+            //add this to the event with different color.
         }
 
 

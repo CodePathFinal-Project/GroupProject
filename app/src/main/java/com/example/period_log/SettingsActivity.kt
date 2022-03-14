@@ -40,7 +40,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun gotoQuestionnaireActivity() {
-        Log.d(Calendar.TAG, "Cycle button clicked should direct to Questionnaire")
+        Log.d(CalendarActivity.TAG, "Cycle button clicked should direct to Questionnaire")
         Toast.makeText(this, "cycle btn", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, QuestionnaireActivity::class.java)
         startActivity(intent)
