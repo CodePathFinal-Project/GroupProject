@@ -29,10 +29,11 @@ class QuestionnaireActivity : AppCompatActivity() {
         val periodLengthEt = findViewById<EditText>(R.id.periodLengthEt)
         val cycleLengthEt = findViewById<EditText>(R.id.cycleLengthEt)
         val user = ParseUser.getCurrentUser()
-        val username = user.username.toString() // use this to display username in the questionnaire layout
+
+        // Display username in the questionnaire layout heading
+        val username = user.username.toString()
         val tv = findViewById<TextView>(R.id.textUser)
         tv.setText("Hi " + username + "!")
-
 
         // Saving all of the user input on the page
         saveBtn.setOnClickListener {
@@ -75,7 +76,6 @@ class QuestionnaireActivity : AppCompatActivity() {
                                     currUserPeriodAndCycleLength.saveInBackground()
                                     Log.e(TAG, "Successfully updating periodLength and cycleLength")
                                     Toast.makeText(this@QuestionnaireActivity, "Period and cycle length are updated", Toast.LENGTH_SHORT).show()
-                                    // TODO: move to calendar view
                                     gotoCalendarActivity()
                                 }
                                 else {
