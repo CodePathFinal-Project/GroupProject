@@ -67,7 +67,7 @@ class QuestionnaireActivity : AppCompatActivity() {
                                     currUserPeriodAndCycleLength.put(UserPeriodAndCycleLength.KEY_PERIOD_LENGTH, periodLength)
                                     currUserPeriodAndCycleLength.put(UserPeriodAndCycleLength.KEY_CYCLE_LENGTH, cycleLength)
                                     currUserPeriodAndCycleLength.saveInBackground()
-                                    Log.e(TAG, "Successfully updating periodLength and cycleLength")
+                                    Log.i(TAG, "Successfully updating periodLength and cycleLength")
                                     Toast.makeText(this@QuestionnaireActivity, "Period and cycle length are updated", Toast.LENGTH_SHORT).show()
                                     gotoCalendarActivity()
                                 }
