@@ -2,18 +2,13 @@ package com.example.period_log
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.UserHandle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parse.*
-import com.parse.GetCallback
-import com.parse.ParseObject
-
-
-
 
 
 class QuestionnaireActivity : AppCompatActivity() {
@@ -27,9 +22,16 @@ class QuestionnaireActivity : AppCompatActivity() {
         val saveBtn = findViewById<Button>(R.id.saveBtn)
         val periodLengthEt = findViewById<EditText>(R.id.periodLengthEt)
         val cycleLengthEt = findViewById<EditText>(R.id.cycleLengthEt)
+        val user = ParseUser.getCurrentUser()
 
+        // Display username in the questionnaire layout heading
+        val username = user.username.toString()
+        val tv = findViewById<TextView>(R.id.textUser)
+        tv.setText("Hi " + username + "!")
+
+        // Saving all of the user input on the page
         saveBtn.setOnClickListener {
-            val user = ParseUser.getCurrentUser()
+            //val user = ParseUser.getCurrentUser()
             Toast.makeText(this,"Curr userId: ${user.objectId}", Toast.LENGTH_SHORT).show()
             //Get periodLength and cycleLength from the EditText
             val periodLength = periodLengthEt.text.toString().toInt()
@@ -67,6 +69,7 @@ class QuestionnaireActivity : AppCompatActivity() {
                                     currUserPeriodAndCycleLength.saveInBackground()
                                     Log.i(TAG, "Successfully updating periodLength and cycleLength")
                                     Toast.makeText(this@QuestionnaireActivity, "Period and cycle length are updated", Toast.LENGTH_SHORT).show()
+                                    gotoCalendarActivity()
                                 }
                                 else {
                                     Log.e(TAG, "There is an error updating periodLength and cycleLength")
@@ -78,6 +81,12 @@ class QuestionnaireActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun gotoCalendarActivity() {
+        Log.e(TAG, "Moving to Calendar page")
+        val intent = Intent(this, CalendarActivity::class.java)
+        startActivity(intent)
     }
 
     companion object {

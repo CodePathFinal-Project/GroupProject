@@ -29,7 +29,7 @@ App_name is a period tracker.
 **Required Must-have Stories**
 
 - [x] prompt the user to give input (first day of the cycle, end day of the cycle, moods, symptoms, menstrural flow and craving)
-- [ ] highlighted from the first day to end of the cycle
+- [x] highlighted from the first day to end of the cycle
 - [ ] show the expected date of the next cycle
 - [x] Settings e.g Notifications (end date and predicted start date)
 
@@ -96,6 +96,12 @@ App_name is a period tracker.
 ### [UNIT 8] Progress
 
 ![wireframe](https://github.com/CodePathFinal-Project/GroupProject/blob/main/unit%208%20walkthrough.gif)
+
+### [UNIT 9] Progress
+![BoBa_craving_week9](https://user-images.githubusercontent.com/71671419/158105842-268f3936-5adb-4485-aa56-67c47f520f02.gif)
+
+### [UNIT 9] Progress 2
+![BoBa_craving_week9](https://github.com/CodePathFinal-Project/GroupProject/blob/main/unit%209%20walkthrough.gif)
 
 ## Schema 
 [This section will be completed in Unit 9]

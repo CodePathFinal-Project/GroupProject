@@ -16,4 +16,5 @@
     <string name="view_dailyInput">View Daily Input</string>
     <string name="add_dailyInput">Add Daily Input</string>
     <string name="daily_input_date">Clicked date</string>
+    <string name="daily_input_on">Edit/Create a Daily Input</string>
 </resources>

@@ -20,7 +20,7 @@ class SettingsActivity : AppCompatActivity() {
 
         var buttonCycle = findViewById<Button>(R.id.buttonCycle)
         buttonCycle.setOnClickListener {
-            gotoCycleSettingsActivity()
+            gotoQuestionnaireActivity()
         }
 
         var buttonLogout = findViewById<Button>(R.id.buttonLogout)
@@ -39,10 +39,10 @@ class SettingsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun gotoCycleSettingsActivity() {
-        Log.d(Calendar.TAG, "Cycle button clicked should direct to CycleSettings")
+    private fun gotoQuestionnaireActivity() {
+        Log.d(CalendarActivity.TAG, "Cycle button clicked should direct to Questionnaire")
         Toast.makeText(this, "cycle btn", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, CycleSettingsActivity::class.java)
+        val intent = Intent(this, QuestionnaireActivity::class.java)
         startActivity(intent)
 
     }

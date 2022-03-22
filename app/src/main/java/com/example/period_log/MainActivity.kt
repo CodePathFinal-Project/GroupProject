@@ -3,9 +3,7 @@ package com.example.period_log
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import com.parse.ParseObject
 import com.parse.ParseUser
 
 
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         // Check if there is a user logged in.
         // If there is, take them to Calendar
         if (ParseUser.getCurrentUser() != null) {
-            val intent = Intent(this@MainActivity, Calendar::class.java)
+            val intent = Intent(this@MainActivity, CalendarActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -48,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         //TODO if the user is logged in, switch to calendar view
         val tempCalendarBtn = findViewById<Button>(R.id.buttonForCalendarView)
         tempCalendarBtn.setOnClickListener{
-            val intent = Intent(this, Calendar::class.java)
+            val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
         }
     }
