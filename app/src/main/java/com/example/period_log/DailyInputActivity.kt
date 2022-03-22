@@ -25,7 +25,8 @@ class DailyInputActivity : AppCompatActivity() {
     lateinit var headacheSeekBar: SeekBar
     lateinit var fatigueSeekBar: SeekBar
     lateinit var btnSave: Button
-//    lateinit var dateString: String
+    lateinit var cycle : Cycle
+
     lateinit var datePicker: DatePicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -194,40 +195,47 @@ class DailyInputActivity : AppCompatActivity() {
         query.whereEqualTo(Cycle.KEY_USER, user)
         query.whereEqualTo(Cycle.KEY_ENDED_AT, endDate)
         //Retrieve the objectId by userId
-        query.findInBackground(object: FindCallback<Cycle> {
-            override fun done(cycle : Cycle?, e: ParseException?) {
+        query.findInBackground(object: FindCallback<Cycle>{
+            override fun done(cycles: MutableList<Cycle>?, e: ParseException?) {
                 if (e != null) {
                     //Something went wrong
                     Log.e(QuestionnaireActivity.TAG, "Error fetching userPeriodCycleLength")
                 } else {
-                    if (cycle != null) {
+                    if (cycles != null) {
                         //We know that it will return a list with only one user in it
-                        Log.i(
-                            QuestionnaireActivity.TAG,
-                            "The successfully fetch has only one user ${cycle.objectId}"
-                        )
-                        // Retrieve the object by id
-                        query.getInBackground(cycle.objectId) { cycle, e ->
-                            if (e == null) {
-                                // Update it periodLength and cycleLength and will get sent to your Parse Server.
-                                cycle.put(Cycle.KEY_ENDED_AT, -1)
-                                cycle.saveInBackground()
-                                Log.i(QuestionnaireActivity.TAG, "Successfully updating endDate")
-                                Toast.makeText(
-                                    this@DailyInputActivity,
-                                    "End date has been updated!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Log.e(
-                                    QuestionnaireActivity.TAG,
-                                    "There is an error updating endDate"
-                                )
-                                Toast.makeText(
-                                    this@DailyInputActivity,
-                                    "Error updating end date",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                        if (cycles.size == 1) {
+                            cycle = cycles[0]
+                            //We know that it will return a list with only one user in it
+                            Log.i(
+                                QuestionnaireActivity.TAG,
+                                "The successfully fetch has only one user ${cycle.objectId}"
+                            )
+                            // Retrieve the object by id
+                            query.getInBackground(cycle.objectId) { cycle, e ->
+                                if (e == null) {
+                                    // Update it periodLength and cycleLength and will get sent to your Parse Server.
+                                    cycle.put(Cycle.KEY_ENDED_AT, -1)
+                                    cycle.saveInBackground()
+                                    Log.i(
+                                        QuestionnaireActivity.TAG,
+                                        "Successfully updating endDate"
+                                    )
+                                    Toast.makeText(
+                                        this@DailyInputActivity,
+                                        "End date has been updated!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    Log.e(
+                                        QuestionnaireActivity.TAG,
+                                        "There is an error updating endDate"
+                                    )
+                                    Toast.makeText(
+                                        this@DailyInputActivity,
+                                        "Error updating end date",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
                         }
                     }
