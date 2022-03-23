@@ -12,8 +12,7 @@ import com.parse.ParseUser
 import com.parse.ParseObject
 
 import com.parse.GetCallback
-
-
+import java.util.*
 
 
 class DailyInputActivity : AppCompatActivity() {
@@ -29,6 +28,12 @@ class DailyInputActivity : AppCompatActivity() {
     lateinit var startDateSwitch : Switch
     lateinit var endDateSwitch : Switch
 
+
+    var crampValue = 0
+    var acneValue = 0
+    var headacheValue = 0
+    var fatigueValue = 0
+
     lateinit var cycle : Cycle
 
 //    lateinit var dailyInput: DailyInput
@@ -37,6 +42,7 @@ class DailyInputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.daily_input_layout)
+
 
         logDate = findViewById(R.id.textDate)
         logDate.setText(CalendarActivity.mYEdited.substring(4, 10))
@@ -52,11 +58,7 @@ class DailyInputActivity : AppCompatActivity() {
 //        startDate =findViewById(R.id.etStartDate)
 //        endDate =findViewById(R.id.etEndDate)
         val user = ParseUser.getCurrentUser()
-
-        var crampValue = 0
-        var acneValue = 0
-        var headacheValue = 0
-        var fatigueValue = 0
+        fetchDailyInput(user, CalendarActivity.currentDate)
 
         crampsSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -110,8 +112,9 @@ class DailyInputActivity : AppCompatActivity() {
             }
         })
 
-        //TODO: save daily input and update daily input functions (no duplicate date values)
-        //TODO: fetch daily input values and show it in the seekbar
+        //save daily input and update daily input functions (no duplicate date values)
+        //fetch daily input values and
+        //TODO: show it in the seekbar
         //TODO: Add daily input as events and show it in the calendar view
         //TODO: Toggle button check cant be true for both start & end date
         //TODO: fetch the start date and end date and apply to switch toggles
@@ -123,26 +126,27 @@ class DailyInputActivity : AppCompatActivity() {
         btnSave.setOnClickListener {
             //if symptoms all 0, ask if user wants to save empty symptoms?
             //save button saves date, symptoms values to parse
-            val dailyInput = DailyInput()
-
-            dailyInput.setUser(user)
-            dailyInput.setAcne(acneValue)
-            dailyInput.setCramp(crampValue)
-            dailyInput.setFatigue(fatigueValue)
-            dailyInput.setHeadache(headacheValue)
-            dailyInput.setDate(CalendarActivity.currentDate)
-            dailyInput.saveInBackground{ exception->
-                if (exception != null){
-                    exception.printStackTrace()
-                    Toast.makeText(this, "Error saving daily input object.", Toast.LENGTH_SHORT).show()
-                }else{
-                    Log.d(TAG,"daily input values saved.")
-                    gotoCalendarActivity()
+            //if-else
+            val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
+            query.include(DailyInput.KEY_USER)
+            query.whereEqualTo(DailyInput.KEY_USER, user)
+            query.whereEqualTo(DailyInput.KEY_DATE, CalendarActivity.currentDate)
+            query.findInBackground(object: FindCallback<DailyInput>{
+                override fun done(dailyInput: MutableList<DailyInput>?, e: ParseException?) {
+                    if(e != null)
+                    {
+                        Log.e(TAG, "Error fetching daily input")
+                    }else{
+                        if(dailyInput != null){
+                            if ( dailyInput.size == 0){
+                                saveDailyInput(user, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
+                            } else{
+                                val currentDailyInputObjectId = dailyInput[0].objectId
+                                updateDailyInput(query, currentDailyInputObjectId, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
+                            }
+                    }}
                 }
-            }
-            //add this to the event with different color.
-            //Add the event
-
+            })
         }
     }
     //TODO: Change the startData and endData to ToggleButton
@@ -333,6 +337,72 @@ class DailyInputActivity : AppCompatActivity() {
         })
         return successSave
     }
+
+
+    private fun saveDailyInput(user: ParseUser, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long) {
+
+        val dailyInput = DailyInput()
+
+        dailyInput.setUser(user)
+        dailyInput.setAcne(acne)
+        dailyInput.setCramp(cramp)
+        dailyInput.setFatigue(fatigue)
+        dailyInput.setHeadache(headache)
+        dailyInput.setDate(date)
+        dailyInput.saveInBackground{ exception->
+            if (exception != null){
+                exception.printStackTrace()
+                Toast.makeText(this, "Error saving daily input object.", Toast.LENGTH_SHORT).show()
+            }else{
+                Log.d(TAG,"daily input values saved.")
+                gotoCalendarActivity()
+            }
+        }
+    }
+
+    private fun updateDailyInput(query: ParseQuery<DailyInput>, objectId: String, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long){
+        query.getInBackground(objectId){ currentDailyInput, e ->
+            if (e != null){
+                e.printStackTrace()
+                Toast.makeText(this, "Error updating daily input object.", Toast.LENGTH_SHORT).show()
+            }else{
+                currentDailyInput.put(DailyInput.KEY_ACNE, acne)
+                currentDailyInput.put(DailyInput.KEY_CRAMP, cramp)
+                currentDailyInput.put(DailyInput.KEY_FATIGUE, fatigue)
+                currentDailyInput.put(DailyInput.KEY_HEADACHE, headache)
+                currentDailyInput.put(DailyInput.KEY_DATE, date)
+                currentDailyInput.saveInBackground()
+                Toast.makeText(this, "Successfully update daily input", Toast.LENGTH_SHORT).show()
+                gotoCalendarActivity()
+            }
+        }
+    }
+
+    private fun fetchDailyInput(user: ParseUser, date: Long) {
+        val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
+        query.include(DailyInput.KEY_USER)
+        query.whereEqualTo(DailyInput.KEY_USER, user)
+        query.whereEqualTo(DailyInput.KEY_DATE, date)
+        query.findInBackground(object: FindCallback<DailyInput>{
+            override fun done(dailyInputs: MutableList<DailyInput>?, e: ParseException?) {
+                if(e != null)
+                {
+                    Log.e(TAG, "No Daily Input")
+                }else{
+                    if(dailyInputs != null && dailyInputs.size == 1){
+                        val currentDailyInput = dailyInputs[0]
+                        acneValue = currentDailyInput.getAcne()
+                        crampValue = currentDailyInput.getCramp()
+                        headacheValue = currentDailyInput.getHeadache()
+                        fatigueValue = currentDailyInput.getFatigue()
+                        Toast.makeText(this@DailyInputActivity, "$acneValue $crampValue $headacheValue $fatigueValue", Toast.LENGTH_SHORT).show()
+                    }}
+            }
+        })
+    }
+
+
+
 
 
     private fun gotoCalendarActivity() {

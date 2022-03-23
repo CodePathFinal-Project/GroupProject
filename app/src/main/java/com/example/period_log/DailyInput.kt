@@ -35,29 +35,29 @@ class DailyInput : ParseObject() {
         put(KEY_CYCLE, cycle)
     }
 
-    fun getCramp() : Any? {
-        return get(KEY_CRAMP)
+    fun getCramp() : Int {
+        return getInt(KEY_CRAMP)
     }
     fun setCramp(cramp: Int) {
         put(KEY_CRAMP, cramp)
     }
 
-    fun getFatigue() : Any? {
-        return get(KEY_FATIGUE)
+    fun getFatigue() : Int {
+        return getInt(KEY_FATIGUE)
     }
     fun setFatigue(fatigue: Int) {
         put(KEY_FATIGUE, fatigue)
     }
 
-    fun getHeadache() : Any? {
-        return get(KEY_HEADACHE)
+    fun getHeadache() : Int {
+        return getInt(KEY_HEADACHE)
     }
     fun setHeadache(headache: Int) {
         put(KEY_HEADACHE, headache)
     }
 
-    fun getAcne() : Any? {
-        return get(KEY_ACNE)
+    fun getAcne() : Int {
+        return getInt(KEY_ACNE)
     }
     fun setAcne(acne: Int) {
         put(KEY_ACNE, acne)

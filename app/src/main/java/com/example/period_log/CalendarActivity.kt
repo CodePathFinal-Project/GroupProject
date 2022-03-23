@@ -18,9 +18,6 @@ import com.parse.ParseUser
 import java.util.*
 import java.util.Calendar
 
-
-// TODO: Add a refresh button to the calendarView -> so we could show the recent cycle
-
 // TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
 // TODO: Show all the period cycle on the calendar view
 // TODO: Add expected cycle dates in to event.

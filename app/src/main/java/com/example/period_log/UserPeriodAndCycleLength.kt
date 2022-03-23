@@ -7,14 +7,14 @@ import com.parse.ParseUser
 @ParseClassName("UserPeriodAndCycleLength")
 class UserPeriodAndCycleLength : ParseObject() {
 
-    fun getPeriodLength(): Int? {
+    fun getPeriodLength(): Int {
         return getInt(KEY_PERIOD_LENGTH)
     }
     fun setPeriodLength(periodLength: Int) {
         put(KEY_PERIOD_LENGTH, periodLength )
     }
 
-    fun getCycleLength(): Int? {
+    fun getCycleLength(): Int {
         return getInt(KEY_CYCLE_LENGTH)
     }
     fun setCycleLength(cycleLength: Int) {
