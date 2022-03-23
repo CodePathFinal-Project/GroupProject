@@ -13,6 +13,14 @@ import com.parse.ParseUser
 @ParseClassName("DailyInput")
 class DailyInput : ParseObject() {
 
+    fun getDate() : Any? {
+        return get(KEY_DATE)
+    }
+
+    fun setDate(date: Long){
+        put(KEY_DATE, date)
+    }
+
     fun getUser(): ParseUser? {
         return getParseUser(KEY_USER)
     }
@@ -44,8 +52,8 @@ class DailyInput : ParseObject() {
     fun getHeadache() : Any? {
         return get(KEY_HEADACHE)
     }
-    fun setHeadache(energy: Int) {
-        put(KEY_HEADACHE, energy)
+    fun setHeadache(headache: Int) {
+        put(KEY_HEADACHE, headache)
     }
 
     fun getAcne() : Any? {
@@ -53,6 +61,10 @@ class DailyInput : ParseObject() {
     }
     fun setAcne(acne: Int) {
         put(KEY_ACNE, acne)
+    }
+
+    override fun setObjectId(id: String){
+        setObjectId(id)
     }
 
 
@@ -63,5 +75,6 @@ class DailyInput : ParseObject() {
         const val KEY_FATIGUE = "fatigue"
         const val KEY_HEADACHE = "headache"
         const val KEY_ACNE = "acne"
+        const val KEY_DATE = "date"
     }
 }

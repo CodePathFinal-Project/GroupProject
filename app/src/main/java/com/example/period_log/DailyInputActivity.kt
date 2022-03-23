@@ -31,7 +31,7 @@ class DailyInputActivity : AppCompatActivity() {
 
     lateinit var cycle : Cycle
 
-    lateinit var dailyInput: DailyInput
+//    lateinit var dailyInput: DailyInput
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class DailyInputActivity : AppCompatActivity() {
         endDateSwitch = findViewById(R.id.switch2)
 //        startDate =findViewById(R.id.etStartDate)
 //        endDate =findViewById(R.id.etEndDate)
-
+        val user = ParseUser.getCurrentUser()
 
         var crampValue = 0
         var acneValue = 0
@@ -110,15 +110,39 @@ class DailyInputActivity : AppCompatActivity() {
             }
         })
 
+        //TODO: save daily input and update daily input functions (no duplicate date values)
+        //TODO: fetch daily input values and show it in the seekbar
+        //TODO: Add daily input as events and show it in the calendar view
+        //TODO: Toggle button check cant be true for both start & end date
+        //TODO: fetch the start date and end date and apply to switch toggles
+        //TODO: if the daily input date is in between cycle, prevent both toggle buttons to be on w/ error message
+
+
+
+
         btnSave.setOnClickListener {
             //if symptoms all 0, ask if user wants to save empty symptoms?
             //save button saves date, symptoms values to parse
+            val dailyInput = DailyInput()
+
+            dailyInput.setUser(user)
             dailyInput.setAcne(acneValue)
             dailyInput.setCramp(crampValue)
             dailyInput.setFatigue(fatigueValue)
             dailyInput.setHeadache(headacheValue)
+            dailyInput.setDate(CalendarActivity.currentDate)
+            dailyInput.saveInBackground{ exception->
+                if (exception != null){
+                    exception.printStackTrace()
+                    Toast.makeText(this, "Error saving daily input object.", Toast.LENGTH_SHORT).show()
+                }else{
+                    Log.d(TAG,"daily input values saved.")
+                    gotoCalendarActivity()
+                }
+            }
             //add this to the event with different color.
-            gotoCalendarActivity()
+            //Add the event
+
         }
     }
     //TODO: Change the startData and endData to ToggleButton

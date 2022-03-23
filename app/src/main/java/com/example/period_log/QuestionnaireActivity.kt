@@ -24,6 +24,7 @@ class QuestionnaireActivity : AppCompatActivity() {
         val cycleLengthEt = findViewById<EditText>(R.id.cycleLengthEt)
         val user = ParseUser.getCurrentUser()
 
+
         // Display username in the questionnaire layout heading
         val username = user.username.toString()
         val tv = findViewById<TextView>(R.id.textUser)
@@ -37,6 +38,7 @@ class QuestionnaireActivity : AppCompatActivity() {
             val periodLength = periodLengthEt.text.toString().toInt()
             val cycleLength = cycleLengthEt.text.toString().toInt()
             savePeriodAndCycleLength(user, periodLength, cycleLength)
+            //gotoCalendarActivity()
         }
     }
 

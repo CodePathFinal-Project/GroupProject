@@ -23,6 +23,7 @@ import java.util.Calendar
 
 // TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
 // TODO: Show all the period cycle on the calendar view
+// TODO: Add expected cycle dates in to event.
 class CalendarActivity : AppCompatActivity() {
 
     lateinit var mmmmYYYY : TextView
@@ -40,6 +41,8 @@ class CalendarActivity : AppCompatActivity() {
 
         fetchCycles()
         mYEdited = Calendar.getInstance().time.toString()
+        currentDate = computeMidnight(Calendar.getInstance().timeInMillis)
+        Log.i(TAG, "$currentDate")
         mmmmYYYY = findViewById(R.id.tvMonth)
         //mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
         mmmmYYYY.setText(mYEdited.substring(4,8) + Calendar.getInstance().time.toString().substring(24,28))
@@ -67,10 +70,10 @@ class CalendarActivity : AppCompatActivity() {
         compactCalendarView.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             override fun onDayClick(dateClicked: Date) {
                 val events: List<Event> = compactCalendarView.getEvents(dateClicked)
-                var temp = dateClicked.time
+                currentDate = dateClicked.time
                 Log.d(TAG, "Day was clicked: $dateClicked with events $events")
                 mYEdited = dateClicked.toString()
-                Toast.makeText(this@CalendarActivity, "$temp", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CalendarActivity, "$currentDate", Toast.LENGTH_SHORT).show()
                 //showPopup(compactCalendarView)
                 //TODO: change position of the popup
                 //TODO: fetch user data when view daily input (only if exists)
@@ -165,11 +168,18 @@ class CalendarActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun computeMidnight(time: Long) : Long{
+        var res = time/86400000
+        res = res.toLong()
+        return res*86400000 + 25200000
+    }
+
     companion object{
         var TAG = "Calendar"
 //        val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
 //            "Aug", "Sep", "Oct", "Nov", "Dec")
         var allCycles: MutableList<Cycle> = mutableListOf()
         var mYEdited = ""
+        var currentDate: Long = 0
     }
 }
