@@ -1,5 +1,6 @@
 package com.example.period_log
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,8 @@ class DailyInputActivity : AppCompatActivity() {
     lateinit var headacheSeekBar: SeekBar
     lateinit var fatigueSeekBar: SeekBar
     lateinit var btnSave: Button
+    lateinit var startDateSwitch : Switch
+    lateinit var endDateSwitch : Switch
 
     lateinit var cycle : Cycle
 
@@ -44,6 +47,8 @@ class DailyInputActivity : AppCompatActivity() {
         headacheSeekBar = findViewById(R.id.headacheBar)
         fatigueSeekBar = findViewById(R.id.fatigueBar)
         btnSave = findViewById(R.id.btnSaveDate)
+        startDateSwitch = findViewById(R.id.switch1)
+        endDateSwitch = findViewById(R.id.switch2)
 //        startDate =findViewById(R.id.etStartDate)
 //        endDate =findViewById(R.id.etEndDate)
 
@@ -113,6 +118,7 @@ class DailyInputActivity : AppCompatActivity() {
             dailyInput.setFatigue(fatigueValue)
             dailyInput.setHeadache(headacheValue)
             //add this to the event with different color.
+            gotoCalendarActivity()
         }
     }
     //TODO: Change the startData and endData to ToggleButton
@@ -302,6 +308,12 @@ class DailyInputActivity : AppCompatActivity() {
             }
         })
         return successSave
+    }
+
+
+    private fun gotoCalendarActivity() {
+        val intent = Intent(this, CalendarActivity::class.java)
+        startActivity(intent)
     }
 
     companion object {
