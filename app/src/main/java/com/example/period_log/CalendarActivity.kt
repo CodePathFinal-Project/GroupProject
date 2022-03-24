@@ -21,13 +21,15 @@ import java.util.Calendar
 // TODO: Write fetchCycle to fetch all the cycle when the refresh button is clicked
 // TODO: Show all the period cycle on the calendar view
 // TODO: Add expected cycle dates in to event.
+// TODO: Add refresh button that clears all events and re-fetch
+// TODO: Save button posts new values to the server.
+
 class CalendarActivity : AppCompatActivity() {
 
     lateinit var mmmmYYYY : TextView
     lateinit var btnSettings: ImageButton
-//    lateinit var btnRefresh : Button
+    lateinit var btnRefresh : Button
     lateinit var btnDailyInput: Button
-    val wrapper: Context = ContextThemeWrapper(this, R.style.PopupMenuStyle)
     lateinit var compactCalendarView: CompactCalendarView
     lateinit var today : Calendar
 
@@ -35,22 +37,22 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
         compactCalendarView = findViewById(R.id.compactcalendar_view) as CompactCalendarView
+//        compactCalendarView = findViewById<CompactCalendarView>(R.id.compactcalendar_view)
 
         fetchCycles()
         mYEdited = Calendar.getInstance().time.toString()
         currentDate = computeMidnight(Calendar.getInstance().timeInMillis)
         Log.i(TAG, "$currentDate")
         mmmmYYYY = findViewById(R.id.tvMonth)
-        //mmmmYYYY.setText(MONTHS[Calendar.getInstance().get(Calendar.MONTH)] + ' '+ Calendar.getInstance().get(Calendar.YEAR).toString())
         mmmmYYYY.setText(mYEdited.substring(4,8) + Calendar.getInstance().time.toString().substring(24,28))
-//        //REFRESH BUTTON
+        //REFRESH BUTTON
         //TODO: refresh button where its on clickListener call fetchCycles
-//        btnRefresh = findViewById<Button>(R.id.Refreshbutton)
-//
-//        btnRefresh.setOnClickListener {
-//            startActivity(intent)
-//            finish()
-//        }
+        btnRefresh = findViewById<Button>(R.id.Refreshbutton)
+
+        btnRefresh.setOnClickListener {
+            startActivity(intent)
+            finish()
+        }
 
         //SETTINGS BUTTON
         btnSettings = findViewById<ImageButton>(R.id.cvSettings)
@@ -145,20 +147,6 @@ class CalendarActivity : AppCompatActivity() {
             })
         }
 
-    private fun showPopup(v : CompactCalendarView){
-        val popupMenu: PopupMenu = PopupMenu(wrapper, v, Gravity.FILL_VERTICAL) //gravity.right? or sliding window?
-        popupMenu.menuInflater.inflate(R.menu.popup_menu_calendar, popupMenu.menu)
-        popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-            when(item.itemId) {
-                R.id.action_viewDI -> {
-                    //Toast.makeText(this@Calendar,"You Clicked : " + item.title,Toast.LENGTH_SHORT).show()
-                    gotoDailyInputActivity()
-                }
-            }
-            true
-        })
-        popupMenu.show()
-    }
 
     private fun gotoDailyInputActivity() {
         val intent = Intent(this, DailyInputActivity::class.java)

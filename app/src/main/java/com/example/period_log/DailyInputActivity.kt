@@ -36,29 +36,32 @@ class DailyInputActivity : AppCompatActivity() {
 
     lateinit var cycle : Cycle
 
-//    lateinit var dailyInput: DailyInput
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.daily_input_layout)
 
-
         logDate = findViewById(R.id.textDate)
         logDate.setText(CalendarActivity.mYEdited.substring(4, 10))
-
 
         crampsSeekBar = findViewById(R.id.crampsBar)
         acneSeekBar = findViewById(R.id.acneBar)
         headacheSeekBar = findViewById(R.id.headacheBar)
         fatigueSeekBar = findViewById(R.id.fatigueBar)
+
         btnSave = findViewById(R.id.btnSaveDate)
+
         startDateSwitch = findViewById(R.id.switch1)
         endDateSwitch = findViewById(R.id.switch2)
-//        startDate =findViewById(R.id.etStartDate)
-//        endDate =findViewById(R.id.etEndDate)
+
         val user = ParseUser.getCurrentUser()
         fetchDailyInput(user, CalendarActivity.currentDate)
+
+        crampsSeekBar.progress = crampValue
+        acneSeekBar.progress = acneValue
+        headacheSeekBar.progress = headacheValue
+        fatigueSeekBar.progress = fatigueValue
 
         crampsSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -119,8 +122,6 @@ class DailyInputActivity : AppCompatActivity() {
         //TODO: Toggle button check cant be true for both start & end date
         //TODO: fetch the start date and end date and apply to switch toggles
         //TODO: if the daily input date is in between cycle, prevent both toggle buttons to be on w/ error message
-
-
 
 
         btnSave.setOnClickListener {
@@ -358,6 +359,7 @@ class DailyInputActivity : AppCompatActivity() {
                 gotoCalendarActivity()
             }
         }
+//        CalendarActivity.allCycles.
     }
 
     private fun updateDailyInput(query: ParseQuery<DailyInput>, objectId: String, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long){
@@ -400,10 +402,6 @@ class DailyInputActivity : AppCompatActivity() {
             }
         })
     }
-
-
-
-
 
     private fun gotoCalendarActivity() {
         val intent = Intent(this, CalendarActivity::class.java)
