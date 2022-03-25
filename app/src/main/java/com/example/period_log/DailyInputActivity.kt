@@ -179,15 +179,33 @@ class DailyInputActivity : AppCompatActivity() {
 
         }
     }
-    //TODO: Change the startData and endData to ToggleButton
-    //TODO: Might need to have find a way to persist the turn on of the Toggle Button
 
-    //TODO: write saveStartDate -> post a new object with endDate - 1 to the server
-    //return true if there is no object with endDate -1 then create a cycle with endDate -1
-    //otherwise return false
-    private fun saveStartDate(user: ParseUser, startDate: Long) : Boolean {
-        val successSave = false
+    //saveStartDate add (startDate, - 1) in cyclesInPair and post a cycle object to the server
+    private fun saveStartDate(user: ParseUser, startDate: Long){
+        //add the (startDate, - 1) into cyclesInPair
+        val pair = Pair(startDate, (-1).toLong())
+        CalendarActivity.cyclesInPair.add(pair)
 
+        val cycle = Cycle()
+        cycle.setUser(ParseUser.getCurrentUser())
+        cycle.setStartedAt(startDate)
+        cycle.setEndedAt(-1)
+        cycle.saveInBackground() { e ->
+            if (e != null) {
+                //Something has went wrong
+                Log.e(TAG, "Error while saving cycle")
+                e.printStackTrace()
+                Toast.makeText(this@DailyInputActivity, "Error saving startedAt of cycle", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Log.i(TAG, "Successfully saved startedAt of cycle")
+                Toast.makeText(this@DailyInputActivity, "startedAt of cycle has been saved!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    //saveEndDate update the endDate in server and cyclesInPair
+    private fun saveEndDate(user: ParseUser, endDate: Long) {
         //Get all the objects from our ParseServer Cycle class
         val query : ParseQuery<Cycle> = ParseQuery.getQuery(Cycle::class.java)
         //This line is added because user is pointer
@@ -196,41 +214,47 @@ class DailyInputActivity : AppCompatActivity() {
         query.whereEqualTo(Cycle.KEY_USER, user)
         query.whereEqualTo(Cycle.KEY_ENDED_AT, -1)
 
-        //Get the object
-        query.findInBackground(object: FindCallback<Cycle> {
+        //2. Get objectId of that cycle
+        query.findInBackground(object: FindCallback<Cycle>{
             override fun done(cycle: MutableList<Cycle>?, e: ParseException?) {
                 if (e != null) {
                     //Something went wrong
                     Log.e(TAG, "Error fetching cycle")
                 } else {
-                    if (cycle != null && cycle.size == 0) {
-                        Log.i(TAG, "The successfully confirmed that there is no cycle with endedAt -1")
-                        val cycle = Cycle()
-                        cycle.setUser(ParseUser.getCurrentUser())
-                        cycle.setStartedAt(startDate)
-                        cycle.setEndedAt(-1)
-                        cycle.saveInBackground() { e ->
-                            if (e != null) {
-                                //Something has went wrong
-                                Log.e(TAG, "Error while saving cycle")
-                                e.printStackTrace()
-                                Toast.makeText(this@DailyInputActivity, "Error saving startedAt of cycle", Toast.LENGTH_SHORT).show()
-                            }
-                            else {
-                                Log.i(TAG, "Successfully saved startedAt of cycle")
-                                Toast.makeText(this@DailyInputActivity, "startedAt of cycle has been saved!", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                    if (cycle != null && cycle.size == 1) {
+                        Log.i(TAG, "The successfully fetch only one cycle with end")
+                        val currCycle = cycle[0]
+                        Log.i(
+                            TAG,
+                            "Successfully fetch the cycle with endedAt:${currCycle.getEndedAt()}"
+                        )
 
-                    }
-                    else {
-                        Log.e(TAG, "There is a cycle without startDate")
-                        Toast.makeText(this@DailyInputActivity, "Please input the endDate for the previous cycle before input a new cycle", Toast.LENGTH_LONG).show()
+                        //TODO: change the (startDate, - 1) in cycleInPair to (startDate, endDate)
+                        var pair = Pair(currCycle.getStartedAt(),(-1).toLong())
+                        CalendarActivity.cyclesInPair.remove(pair)
+                        pair = Pair(currCycle.getStartedAt(), endDate)
+                        CalendarActivity.cyclesInPair.add(pair)
+
+                        //3. Update the endDate using its objectId
+                        query.getInBackground(currCycle.objectId) { currCycle, e ->
+                            if (e == null) {
+                                //Update the endedAt and saveInBackground to update the Parse Server
+                                currCycle.put(Cycle.KEY_ENDED_AT, endDate)
+                                Log.i(TAG, "Successfully updating endedAt")
+                                Toast.makeText(this@DailyInputActivity,"End Date is updated.", Toast.LENGTH_SHORT).show()
+                            }
+                            else
+                            {
+                                Log.e(TAG,"There is an error updating endedAt")
+                                Toast.makeText(this@DailyInputActivity, "Input startDate before endDate",Toast.LENGTH_SHORT).show()
+                                //Prevent the toggle button to turn on because successUpdate is still false
+                            }
+
+                        }
                     }
                 }
             }
         })
-        return successSave
     }
 
     //TODO: deleteStartDate the function is called when the startDate toggle button turnOff. It delete the cycle object from the ParseServer
@@ -314,58 +338,6 @@ class DailyInputActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    //TODO: write saveEndDate -> look for the object with endDate -1 and update the endDate
-    // return true if it is successfully update, otherwise return false
-    private fun saveEndDate(user: ParseUser, endDate: Long) : Boolean {
-        var successSave = false
-        //Get all the objects from our ParseServer Cycle class
-        val query : ParseQuery<Cycle> = ParseQuery.getQuery(Cycle::class.java)
-        //This line is added because user is pointer
-        query.include(Cycle.KEY_USER)
-        //Find the currentUser object where the endedAt equal to -1
-        query.whereEqualTo(Cycle.KEY_USER, user)
-        query.whereEqualTo(Cycle.KEY_ENDED_AT, -1)
-
-        //2. Get objectId of that cycle
-        query.findInBackground(object: FindCallback<Cycle>{
-            override fun done(cycle: MutableList<Cycle>?, e: ParseException?) {
-                if (e != null) {
-                    //Something went wrong
-                    Log.e(TAG, "Error fetching cycle")
-                } else {
-                    if (cycle != null && cycle.size == 1) {
-                        Log.i(TAG, "The successfully fetch only one cycle with end")
-                        val currCycle = cycle[0]
-                        Log.i(
-                            TAG,
-                            "Successfully fetch the cycle with endedAt:  ${
-                                currCycle.getEndedAt().toString()
-                            }"
-                        )
-                        //3. Update the endDate using its objectId
-                        query.getInBackground(currCycle.objectId) { currCycle, e ->
-                            if (e == null) {
-                                //Update the endedAt and saveInBackground to update the Parse Server
-                                currCycle.put(Cycle.KEY_ENDED_AT, endDate)
-                                Log.i(TAG, "Successfully updating endedAt")
-                                Toast.makeText(this@DailyInputActivity,"End Date is updated.", Toast.LENGTH_SHORT).show()
-                                successSave = true
-                            }
-                            else
-                            {
-                                Log.e(TAG,"There is an error updating endedAt")
-                                Toast.makeText(this@DailyInputActivity, "Input startDate before endDate",Toast.LENGTH_SHORT).show()
-                                //Prevent the toggle button to turn on because successUpdate is still false
-                            }
-
-                        }
-                    }
-                }
-            }
-        })
-        return successSave
     }
 
     private fun saveDailyInput(user: ParseUser, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long) {

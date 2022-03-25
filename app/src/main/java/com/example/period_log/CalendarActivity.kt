@@ -136,7 +136,7 @@ class CalendarActivity : AppCompatActivity() {
         query.addDescendingOrder(Cycle.KEY_STARTED_AT)
 
         //Only return the most recent 5 cycles
-        query.setLimit(2)
+        query.setLimit(5)
 
         query.findInBackground (object : FindCallback<Cycle> {
                 override fun done(cycles: MutableList<Cycle>?, e: ParseException?) {
@@ -180,7 +180,6 @@ class CalendarActivity : AppCompatActivity() {
                                 Log.i(TAG, "allCycles is empty!!")
                             }
                             addEvents()
-
                         }
                     }
 
