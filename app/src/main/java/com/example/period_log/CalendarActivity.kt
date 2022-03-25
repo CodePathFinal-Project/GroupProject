@@ -59,6 +59,7 @@ class CalendarActivity : AppCompatActivity() {
         btnRefresh = findViewById<ImageButton>(R.id.Refreshbutton)
         btnRefresh.setOnClickListener {
             Log.i(TAG, "Refresh button")
+            compactCalendarView.removeAllEvents()
             fetchCycles()
         }
 
@@ -161,7 +162,7 @@ class CalendarActivity : AppCompatActivity() {
                             }
                             allCycles.clear()
                             var cycleSize = allCycles.size
-                            compactCalendarView.removeAllEvents()
+//                            compactCalendarView.removeAllEvents()
                             Log.i(TAG, "Cycles are cleared $cycleSize and events are cleared")
                             allCycles.addAll(cycles)
                             cyclesInPair.clear()
@@ -211,7 +212,7 @@ class CalendarActivity : AppCompatActivity() {
                 } else {
                     if (dailyInputs != null) {
                         allDailyInputs.clear()
-                        compactCalendarView.removeAllEvents()
+//                        compactCalendarView.removeAllEvents()
                         allDailyInputs.addAll(dailyInputs)
                         allDailyInputDate.clear()
 

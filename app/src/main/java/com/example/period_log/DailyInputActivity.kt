@@ -184,8 +184,6 @@ class DailyInputActivity : AppCompatActivity() {
                     }
                 })
             }
-
-
         }
     }
 
