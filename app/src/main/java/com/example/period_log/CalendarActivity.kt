@@ -102,10 +102,19 @@ class CalendarActivity : AppCompatActivity() {
 
     fun addEvents() {
         for ((start, end) in cyclesInPair){
-            for(day in start..(end+1) step DAYINMILLISEC) {
-                Log.i(TAG, "populating events on calendar")
-                val ev = Event(Color.MAGENTA, day)
-                compactCalendarView.addEvent(ev)
+            if (end == (-1).toLong()) {
+                //TODO: now without endDate we default to 5 days
+                for (i in 0..4) {
+                    var day = start + (i * DAYINMILLISEC)
+                    val ev = Event(Color.BLUE, day)
+                    compactCalendarView.addEvent(ev)
+                }
+            }else {
+                for(day in start..(end+1) step DAYINMILLISEC) {
+                    Log.i(TAG, "populating events on calendar")
+                    val ev = Event(Color.MAGENTA, day)
+                    compactCalendarView.addEvent(ev)
+                }
             }
         }
     }

@@ -154,6 +154,14 @@ class DailyInputActivity : AppCompatActivity() {
                 Toast.makeText(this, "You cannot have both Start and End cycle on the same day.", Toast.LENGTH_SHORT).show()
             }
             else{
+                if (startDateOn) {
+                    saveStartDate(user, CalendarActivity.currentDate)
+                }
+                else if (endDateOn) {
+                    saveEndDate(user, CalendarActivity.currentDate)
+                }
+
+                //Searching for dailyInput in the server
                 val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
                 query.include(DailyInput.KEY_USER)
                 query.whereEqualTo(DailyInput.KEY_USER, user)
@@ -228,7 +236,6 @@ class DailyInputActivity : AppCompatActivity() {
                             TAG,
                             "Successfully fetch the cycle with endedAt:${currCycle.getEndedAt()}"
                         )
-
                         //TODO: change the (startDate, - 1) in cycleInPair to (startDate, endDate)
                         var pair = Pair(currCycle.getStartedAt(),(-1).toLong())
                         CalendarActivity.cyclesInPair.remove(pair)
@@ -240,6 +247,7 @@ class DailyInputActivity : AppCompatActivity() {
                             if (e == null) {
                                 //Update the endedAt and saveInBackground to update the Parse Server
                                 currCycle.put(Cycle.KEY_ENDED_AT, endDate)
+                                currCycle.saveInBackground()
                                 Log.i(TAG, "Successfully updating endedAt")
                                 Toast.makeText(this@DailyInputActivity,"End Date is updated.", Toast.LENGTH_SHORT).show()
                             }
