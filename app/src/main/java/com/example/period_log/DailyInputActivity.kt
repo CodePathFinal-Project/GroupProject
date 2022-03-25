@@ -1,10 +1,13 @@
 package com.example.period_log
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
+import com.github.sundeepk.compactcalendarview.domain.Event
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
@@ -13,6 +16,12 @@ import com.parse.ParseObject
 
 import com.parse.GetCallback
 import java.util.*
+import android.widget.CompoundButton
+
+import android.widget.Switch
+
+
+
 
 
 class DailyInputActivity : AppCompatActivity() {
@@ -27,6 +36,8 @@ class DailyInputActivity : AppCompatActivity() {
     lateinit var btnSave: Button
     lateinit var startDateSwitch : Switch
     lateinit var endDateSwitch : Switch
+    var startDateOn: Boolean = false
+    var endDateOn: Boolean = false
 
 
     var crampValue = 0
@@ -58,10 +69,6 @@ class DailyInputActivity : AppCompatActivity() {
         val user = ParseUser.getCurrentUser()
         fetchDailyInput(user, CalendarActivity.currentDate)
 
-        crampsSeekBar.progress = crampValue
-        acneSeekBar.progress = acneValue
-        headacheSeekBar.progress = headacheValue
-        fatigueSeekBar.progress = fatigueValue
 
         crampsSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -117,37 +124,59 @@ class DailyInputActivity : AppCompatActivity() {
 
         //save daily input and update daily input functions (no duplicate date values)
         //fetch daily input values and
-        //TODO: show it in the seekbar
+        //show it in the seekbar - it's inside the fetchDailyInput function
         //TODO: Add daily input as events and show it in the calendar view
         //TODO: Toggle button check cant be true for both start & end date
         //TODO: fetch the start date and end date and apply to switch toggles
         //TODO: if the daily input date is in between cycle, prevent both toggle buttons to be on w/ error message
 
+        startDateSwitch.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if (isChecked) {
+                Toast.makeText(this, "Start On.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Start Off.", Toast.LENGTH_SHORT).show()
+            }
+            startDateOn = isChecked
+        }
+
+        endDateSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                Toast.makeText(this, "End On.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "End Off.", Toast.LENGTH_SHORT).show()
+            }
+            endDateOn = isChecked
+        }
 
         btnSave.setOnClickListener {
-            //if symptoms all 0, ask if user wants to save empty symptoms?
-            //save button saves date, symptoms values to parse
-            //if-else
-            val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
-            query.include(DailyInput.KEY_USER)
-            query.whereEqualTo(DailyInput.KEY_USER, user)
-            query.whereEqualTo(DailyInput.KEY_DATE, CalendarActivity.currentDate)
-            query.findInBackground(object: FindCallback<DailyInput>{
-                override fun done(dailyInput: MutableList<DailyInput>?, e: ParseException?) {
-                    if(e != null)
-                    {
-                        Log.e(TAG, "Error fetching daily input")
-                    }else{
-                        if(dailyInput != null){
-                            if ( dailyInput.size == 0){
-                                saveDailyInput(user, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
-                            } else{
-                                val currentDailyInputObjectId = dailyInput[0].objectId
-                                updateDailyInput(query, currentDailyInputObjectId, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
-                            }
-                    }}
-                }
-            })
+
+            if (startDateOn && endDateOn){
+                Toast.makeText(this, "You cannot have both Start and End cycle on the same day.", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
+                query.include(DailyInput.KEY_USER)
+                query.whereEqualTo(DailyInput.KEY_USER, user)
+                query.whereEqualTo(DailyInput.KEY_DATE, CalendarActivity.currentDate)
+                query.findInBackground(object: FindCallback<DailyInput>{
+                    override fun done(dailyInput: MutableList<DailyInput>?, e: ParseException?) {
+                        if(e != null)
+                        {
+                            Log.e(TAG, "Error fetching daily input")
+                        }else{
+                            if(dailyInput != null){
+                                if ( dailyInput.size == 0){
+                                    saveDailyInput(user, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
+                                } else{
+                                    val currentDailyInputObjectId = dailyInput[0].objectId
+                                    updateDailyInput(query, currentDailyInputObjectId, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
+                                }
+                            }}
+                    }
+                })
+            }
+
+
         }
     }
     //TODO: Change the startData and endData to ToggleButton
@@ -339,7 +368,6 @@ class DailyInputActivity : AppCompatActivity() {
         return successSave
     }
 
-
     private fun saveDailyInput(user: ParseUser, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long) {
 
         val dailyInput = DailyInput()
@@ -359,7 +387,9 @@ class DailyInputActivity : AppCompatActivity() {
                 gotoCalendarActivity()
             }
         }
-//        CalendarActivity.allCycles.
+        val ev = Event(Color.YELLOW, date)
+        CalendarActivity.compactCalendarView.addEvent(ev)
+
     }
 
     private fun updateDailyInput(query: ParseQuery<DailyInput>, objectId: String, acne: Int, cramp: Int, fatigue: Int, headache: Int, date: Long){
@@ -397,6 +427,10 @@ class DailyInputActivity : AppCompatActivity() {
                         crampValue = currentDailyInput.getCramp()
                         headacheValue = currentDailyInput.getHeadache()
                         fatigueValue = currentDailyInput.getFatigue()
+                        crampsSeekBar.setProgress(crampValue)
+                        acneSeekBar.setProgress(acneValue)
+                        headacheSeekBar.setProgress(headacheValue)
+                        fatigueSeekBar.setProgress(fatigueValue)
                         Toast.makeText(this@DailyInputActivity, "$acneValue $crampValue $headacheValue $fatigueValue", Toast.LENGTH_SHORT).show()
                     }}
             }

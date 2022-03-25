@@ -40,14 +40,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tvCalendar" />
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        android:id="@+id/compactcalendar_view"
+        android:id="@+id/compactCalendar_view"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:layout_marginTop="20dp"
         app:compactCalendarBackgroundColor="#E2D3E8"
-        app:compactCalendarCurrentDayBackgroundColor="@color/purple_light"
+        app:compactCalendarCurrentDayBackgroundColor="#7b9acc"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#b1d8cf"
-        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarMultiEventIndicatorColor="#F0EDCC"
         app:compactCalendarOtherMonthDaysTextColor="#b1d8cf"
         app:compactCalendarTargetHeight="400dp"
         app:compactCalendarTextColor="@color/white"
@@ -67,13 +67,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_settings_24" />
 
-<!--    <Button-->
-<!--        android:id="@+id/Refreshbutton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Button"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/tvCalendar"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <ImageButton
+        android:id="@+id/Refreshbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_autorenew_24" />
 
     <Button
         android:id="@+id/btnViewDailyInput"
@@ -86,29 +89,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view"
+        app:layout_constraintTop_toBottomOf="@+id/compactCalendar_view"
         app:layout_constraintVertical_bias="0.833" />
 
-    <TextView
-        android:id="@+id/tvChecks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="140dp"
-        android:text="No Daily Input yet"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvChecks"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginBottom="140dp"-->
+<!--        android:text="No Daily Input yet"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
-    <ImageButton
-        android:id="@+id/Refreshbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_autorenew_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
                 goToCalendar()
             } else {
                 e.printStackTrace()
+                Log.i(TAG, "error logging in user")
                 Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
             }})
         )

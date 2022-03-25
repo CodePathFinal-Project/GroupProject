@@ -28,7 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         android:text="get started" />
 
     <Button
@@ -40,8 +39,8 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:text="log in" />
 
-        android:text="sign in" />
 <!--temporary button to view calendar-->
     <Button
         android:id="@+id/buttonForCalendarView"
