@@ -13,8 +13,8 @@ import com.parse.ParseUser
 @ParseClassName("DailyInput")
 class DailyInput : ParseObject() {
 
-    fun getDate() : Any? {
-        return get(KEY_DATE)
+    fun getDate() : Long {
+        return getLong(KEY_DATE)
     }
 
     fun setDate(date: Long){
@@ -26,13 +26,6 @@ class DailyInput : ParseObject() {
     }
     fun setUser(user: ParseUser) {
         put(KEY_USER, user)
-    }
-
-    fun getCycle() : ParseObject? {
-        return getParseObject(KEY_CYCLE)
-    }
-    fun setCycle(cycle: Cycle) {
-        put(KEY_CYCLE, cycle)
     }
 
     fun getCramp() : Int {

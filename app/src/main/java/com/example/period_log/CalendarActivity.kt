@@ -1,16 +1,11 @@
 package com.example.period_log
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextThemeWrapper
-import android.view.Gravity
-import android.view.MotionEvent
 import android.widget.*
-import androidx.core.view.GestureDetectorCompat
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
 import com.parse.FindCallback
@@ -44,12 +39,14 @@ class CalendarActivity : AppCompatActivity() {
         compactCalendarView = findViewById(R.id.compactCalendar_view)
         if (!fetched){
             fetchCycles()
+            fetchDailyInputDate()
             Log.i(TAG, "$cyclesInPair")
             Log.i(TAG, "very first time opening calendar")
             fetched = true
         }
         else{
-            addEvents()
+            addCycleEvents()
+            addEventsDailyInput()
         }
         Log.i(TAG, "$cyclesInPair")
 
@@ -91,7 +88,7 @@ class CalendarActivity : AppCompatActivity() {
                 currentDate = firstDayOfNewMonth.time //returns milliseconds
                 Log.i(TAG, "Month was scrolled to: $firstDayOfNewMonth and $currentDate")
                 //milliseconds to Date class
-                Toast.makeText(this@CalendarActivity, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@CalendarActivity, "$firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
                 mYEdited = firstDayOfNewMonth.toString()
                 mmmmYYYY.setText(mYEdited.substring(4,8) + mYEdited.substring(24,28))
 
@@ -100,9 +97,10 @@ class CalendarActivity : AppCompatActivity() {
         })
     }
 
-    fun addEvents() {
+    fun addCycleEvents() {
         for ((start, end) in cyclesInPair){
             if (end == (-1).toLong()) {
+                Log.i(TAG, "populating ongoing cycle")
                 //TODO: now without endDate we default to 5 days
                 for (i in 0..4) {
                     var day = start + (i * DAYINMILLISEC)
@@ -188,13 +186,58 @@ class CalendarActivity : AppCompatActivity() {
                             } else {
                                 Log.i(TAG, "allCycles is empty!!")
                             }
-                            addEvents()
+                            addCycleEvents()
                         }
                     }
 
                 }
             })
         }
+
+    fun fetchDailyInputDate() {
+        //Specify the class query
+        val query : ParseQuery<DailyInput> = ParseQuery.getQuery(DailyInput::class.java)
+        //Find all objects
+        //This is line is added because user is a pointer
+        query.include(DailyInput.KEY_USER)
+        //Only return cycles from currently signed in user
+        query.whereEqualTo(DailyInput.KEY_USER, ParseUser.getCurrentUser())
+
+        query.findInBackground (object : FindCallback<DailyInput> {
+            override fun done(dailyInputs: MutableList<DailyInput>?, e: ParseException?) {
+                if (e != null) {
+                    //Something went wrong
+                    Log.e(TAG, "Error fetching posts")
+                } else {
+                    if (dailyInputs != null) {
+                        allDailyInputs.clear()
+                        compactCalendarView.removeAllEvents()
+                        allDailyInputs.addAll(dailyInputs)
+                        allDailyInputDate.clear()
+
+                        if (allDailyInputs.size !=  0) {
+                            Log.i(TAG, "allCycles is not empty!!")
+                            for (input in allDailyInputs) {
+                                allDailyInputDate.add(input.getDate())
+                                Log.i(TAG, "$allDailyInputDate")
+                            }
+                        } else {
+                            Log.i(TAG, "allDailyInputs is empty!!")
+                        }
+                        addEventsDailyInput()
+                    }
+                }
+
+            }
+        })
+    }
+
+    private fun addEventsDailyInput() {
+        for (date in allDailyInputDate){
+            val ev = Event(Color.CYAN, date)
+            compactCalendarView.addEvent(ev)
+        }
+    }
 
     private fun gotoDailyInputActivity() {
         val intent = Intent(this, DailyInputActivity::class.java)
@@ -210,8 +253,10 @@ class CalendarActivity : AppCompatActivity() {
 
     companion object{
         var TAG = "Calendar"
+        var allDailyInputs: MutableList<DailyInput> = mutableListOf()
+        var allDailyInputDate = ArrayList<Long>()
         var allCycles: MutableList<Cycle> = mutableListOf()
-        val cyclesInPair = ArrayList<Pair<Long, Long>>()
+        var cyclesInPair = ArrayList<Pair<Long, Long>>()
         var mYEdited = ""
         var currentDate: Long = 0
         lateinit var compactCalendarView: CompactCalendarView

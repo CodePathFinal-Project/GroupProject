@@ -175,6 +175,7 @@ class DailyInputActivity : AppCompatActivity() {
                             if(dailyInput != null){
                                 if ( dailyInput.size == 0){
                                     saveDailyInput(user, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
+                                    CalendarActivity.allDailyInputDate.add(CalendarActivity.currentDate)
                                 } else{
                                     val currentDailyInputObjectId = dailyInput[0].objectId
                                     updateDailyInput(query, currentDailyInputObjectId, acneValue, crampValue, fatigueValue, headacheValue, CalendarActivity.currentDate)
