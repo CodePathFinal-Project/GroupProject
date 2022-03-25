@@ -45,7 +45,6 @@ class CalendarActivity : AppCompatActivity() {
         if (!fetched){
             fetchCycles()
             Log.i(TAG, "$cyclesInPair")
-            addEvents()
             Log.i(TAG, "very first time opening calendar")
             fetched = true
         }
